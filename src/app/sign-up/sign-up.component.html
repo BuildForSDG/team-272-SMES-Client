@@ -1,0 +1,56 @@
+<main>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>About Company Owner</h1>
+            <hr>
+            <form [formGroup]="signUpForm" (ngSubmit)="saveProfile(signUpForm.value)" autocomplete="off" novalidate>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <em>*</em>
+                    <em>Required</em>
+                    <input name="fullName" class="form-control" type="text" placeholder="Enter your Full Name here"
+                        required />
+                </div>
+                <div class="form-group">
+                    <label for="physicalAddress">Physical Address</label>
+                    <em>*</em>
+                    <em>Required</em>
+                    <input name="physicalAddress" class="form-control" type="text"
+                        placeholder="Enter your Physical Address here" required />
+                </div>
+                <div class="form-group">
+                    <label for="counrty">Country</label>
+                    <em>*</em>
+                    <em>Required</em>
+                    <select class="form-control" required>
+                        <option value="">Select Country Here</option>
+                        <option value="Uganda">Uganda</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber">Phone Number</label>
+                    <em>*</em>
+                    <em>Required</em>
+                    <em>Enter Valid Phone Number</em>
+                    <input name="contactNumber" class="form-control" type="tel"
+                        placeholder="Enter your phone number here" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <em class="required">*</em>
+                    <em *ngIf="email.controls.touched && (email.controls.invalid || mouseOver)">Required</em>
+                    <em>Enter Valid Email Address</em>
+                    <input name="email" class="form-control" type="email" placeholder="Enter your email address here"
+                        required />
+                </div>
+                <span (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+                    <div class="btn btn-group">
+                        <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Submit</button>
+                        <button (click)="cancel()" class="btn btn-default">Cancel</button>
+                    </div>
+                </span>
+            </form>
+        </div>
+    </div>
+</main>
