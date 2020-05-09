@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { OverviewComponent } from './dashboard/overview/overview.component';
-import { FundersComponent } from './funders/funders.component';
-import { SmesComponent } from './smes/smes.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OverviewComponent } from './components/dashboard/overview/overview.component';
+import { FundersComponent } from './components/funders/funders.component';
+import { SmesComponent } from './components/smes/smes.component';
 
 const routes: Routes = [
   {
