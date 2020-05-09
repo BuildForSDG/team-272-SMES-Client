@@ -38,4 +38,8 @@ export class SignUpComponent implements OnInit {
         }
     }
 
+    cancel(){
+        
+    }
+
 }
