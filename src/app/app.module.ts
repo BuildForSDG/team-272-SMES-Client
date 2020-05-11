@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SmesComponent } from './components/smes/smes.component';
     DashboardComponent,
     OverviewComponent,
     FundersComponent,
-    SmesComponent
+    SmesComponent,
+    SignInComponent
   ],
 
   imports: [
