@@ -12,5 +12,16 @@
         background-size: cover;
         max-width: 100%;
         background-position:50% 50%;
+
+        .header {
+            color: rgb(15, 16, 124);
+            font-size: 60px;
+            font-weight: bolder;
+        }
+        .header span {
+            color: rgb(110, 112, 202);
+            font-size: 30px;
+            font-weight: bold;
+        }
     }
 }
