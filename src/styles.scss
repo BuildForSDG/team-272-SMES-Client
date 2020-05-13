@@ -27,6 +27,23 @@ $team-client-theme: mat-light-theme($team-client-primary, $team-client-accent, $
 @include angular-material-theme($team-client-theme);
 
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/forms";
+
+.ng-valid {
+  &:not(.ng-untouched) {
+    @extend .is-valid
+  }
+}
+
+.ng-invalid {
+  &:not(.ng-untouched) {
+    @extend .is-invalid }
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
