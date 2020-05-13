@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
-import { SignUpModule } from './components/sign-up/sign-up.module';
+import { UserModule } from './components/user/user.module';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePageComponent
   },
-  { path: 'sign-up', loadChildren: ()=>SignUpModule},
+  { path: 'user', loadChildren: () => UserModule },
   {
     path: 'dashboard', component: DashboardComponent,
     children: [

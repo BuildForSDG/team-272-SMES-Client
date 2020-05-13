@@ -8,6 +8,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
+import { JQ_TOKEN } from './shared/jQuery.service';
+
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { SmesComponent } from './components/smes/smes.component';
     BrowserAnimationsModule
   ],
 
-  providers: [],
+  providers: [{ provide: JQ_TOKEN, useValue: jQuery }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
