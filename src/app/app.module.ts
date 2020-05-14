@@ -15,6 +15,7 @@ import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { OpenSidebarOnswipeDirective } from './directives/open-sidebar-onswipe.directive';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OpenSidebarOnswipeDirective } from './directives/open-sidebar-onswipe.d
     FundersComponent,
     SmesComponent,
     NavbarComponent,
-    OpenSidebarOnswipeDirective
+    OpenSidebarOnswipeDirective,
+    SignInComponent,
   ],
 
   imports: [
