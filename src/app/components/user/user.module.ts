@@ -6,6 +6,8 @@ import { SignUpService, SignUpComponent } from './sign-up';
 import { ProfileComponent } from './profile';
 import { CompleteProfileComponent } from './profile/complete-profile.component';
 import { ViewToggleDirective } from './common/view-toggle.directive';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent },
@@ -18,6 +20,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        FontAwesomeModule,
         RouterModule.forChild(routes)
     ],
     declarations: [
@@ -29,4 +32,8 @@ const routes: Routes = [
     providers: [SignUpService]
 })
 
-export class UserModule { }
+export class UserModule {
+    constructor(library: FaIconLibrary) {
+        library.addIconPacks(fas);
+    }
+}

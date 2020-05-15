@@ -44,6 +44,10 @@ em {
   flex-direction: column;
 }
 
+.reg-nav .card {
+  padding: 5px 0 0px;
+}
+
 .col-md-4 .reg-nav div {
   border: none;
   border-bottom: outset;
@@ -68,11 +72,10 @@ em {
 
 .wizard-header {
   text-align: center;
-  padding: 37px 30px 13px;
+  padding: 10px 30px 13px;
 }
 
-.inner h3,
-.col-md-6 h2 {
+.col-md-4 h1 {
 	font-size: 22px;
     color: #333;
     font-weight: 700;
@@ -82,7 +85,15 @@ em {
 .inner p {
 	color: #666;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: 200;
+}
+
+#btn-group .nav-btn-group #next{
+  margin-bottom: 10px;
+}
+
+#btn-group .submit-btn-group{
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 768px) {

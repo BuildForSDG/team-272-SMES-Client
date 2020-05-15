@@ -25,10 +25,11 @@ let jQuery = window['$'];
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
 
   providers: [{ provide: JQ_TOKEN, useValue: jQuery }],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
