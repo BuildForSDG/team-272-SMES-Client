@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { RouterModule, Routes, Router} from '@angular/router';
+import { map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-overview',

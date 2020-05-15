@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { RouterModule, Router} from '@angular/router';
 
 @Component({
   selector: 'app-funders',
@@ -12,7 +12,7 @@ export class FundersComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

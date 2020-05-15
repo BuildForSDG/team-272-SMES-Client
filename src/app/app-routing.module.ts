@@ -9,8 +9,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomePageComponent
+    path: '', component: HomePageComponent
   },
 
   { path: 'dashboard', component: DashboardComponent,
