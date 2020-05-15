@@ -1,0 +1,12 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" opened>
+    <mat-toolbar color="warn">
+      <button mat-mini-fab color="primary" (click)="sidenav.open()" >
+        <mat-icon> menu</mat-icon>
+     </button>
+   </mat-toolbar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="warn"> Main Toolbar </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

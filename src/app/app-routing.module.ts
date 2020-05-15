@@ -6,6 +6,8 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { UserModule } from './components/user/user.module';
+import { SignInComponent } from './sign-in/sign-in.component';
+
 
 const routes: Routes = [
   {
@@ -16,11 +18,14 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-      { path: 'Overview', component: OverviewComponent },
-      { path: 'Funders', component: FundersComponent },
-      { path: 'Smes', component: SmesComponent, }]
-  }
-];
+
+      { path: 'Overview', component: OverviewComponent},
+      { path: 'Funders', component: FundersComponent},
+      { path: 'Smes', component: SmesComponent,}]
+    },
+    { path: 'sign-in', component: SignInComponent}
+  ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
