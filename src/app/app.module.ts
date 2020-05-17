@@ -17,6 +17,12 @@ import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/side-nav-toggler.component';
+import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SideNavService } from './shared/services/side-nav.service';
+import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +34,10 @@ import { SignInComponent } from './sign-in/sign-in.component';
     SmesComponent,
     FooterComponent,
     SignInComponent,
+    SideNavTogglerComponent,
+    SmesDashboardComponent,
+    NavbarComponent,
+    SideNavComponent
   ],
 
   imports: [
@@ -42,7 +52,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
     MatIconModule
   ],
 
-  providers: [],
+  providers: [SideNavService],
   bootstrap: [AppComponent]
 })
 
