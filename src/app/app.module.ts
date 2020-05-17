@@ -16,10 +16,7 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { JQ_TOKEN } from './shared/jQuery.service';
 import { SignInComponent } from './sign-in/sign-in.component';
-
-let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -45,7 +42,7 @@ let jQuery = window['$'];
     MatIconModule
   ],
 
-  providers: [{ provide: JQ_TOKEN, useValue: jQuery }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 
