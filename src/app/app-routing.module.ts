@@ -6,7 +6,7 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-
+import { NewsComponent } from './news/news.component';
 const routes: Routes = [
   {
     path: '', component: HomePageComponent
@@ -18,7 +18,8 @@ const routes: Routes = [
       { path: 'Funders', component: FundersComponent},
       { path: 'Smes', component: SmesComponent,}]
     },
-    { path: 'sign-in', component: SignInComponent}
+  { path: 'sign-in', component: SignInComponent},
+  { path: 'news', component: NewsComponent}
   ];
 
 @NgModule({

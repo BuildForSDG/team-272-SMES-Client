@@ -12,7 +12,7 @@ export class FundersComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }
