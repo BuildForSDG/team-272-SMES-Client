@@ -19,6 +19,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { JQ_TOKEN } from './shared/jQuery.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 
+
+
+
 let jQuery = window['$'];
 
 @NgModule({
@@ -27,10 +30,9 @@ let jQuery = window['$'];
     HomePageComponent,
     DashboardComponent,
     OverviewComponent,
-    FundersComponent,
     SmesComponent,
     FooterComponent,
-    SignInComponent,
+    SignInComponent
   ],
 
   imports: [
