@@ -1,5 +1,4 @@
 import { Directive, OnInit, Inject, ElementRef } from '@angular/core';
-import { JQ_TOKEN } from 'src/app/shared/jQuery.service';
 
 @Directive({
     selector: '[view-toggle]'
@@ -13,7 +12,7 @@ export class ViewToggleDirective implements OnInit {
     private step = 0;
 
 
-    constructor(@Inject(JQ_TOKEN) private $, ref: ElementRef) {
+    constructor(ref: ElementRef) {
         this.el = ref.nativeElement;
     }
 
