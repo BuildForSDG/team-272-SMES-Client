@@ -7,12 +7,17 @@ import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { UserModule } from './components/user/user.module';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: HomePageComponent
+  },
+  {
+    path: 'smes-dashboard',
+    component: SmesDashboardComponent
   },
   { path: 'user', loadChildren: () => UserModule },
   { path: 'funder', loadChildren: () => import('./components/funder/funder.module').then(mod => mod.FunderModule)},

@@ -16,13 +16,13 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { JQ_TOKEN } from './shared/jQuery.service';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/side-nav-toggler.component';
+import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SideNavService } from './shared/services/side-nav.service';
+import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
 
-
-
-
-let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -32,7 +32,11 @@ let jQuery = window['$'];
     OverviewComponent,
     SmesComponent,
     FooterComponent,
-    SignInComponent
+    SignInComponent,
+    SideNavTogglerComponent,
+    SmesDashboardComponent,
+    NavbarComponent,
+    SideNavComponent
   ],
 
   imports: [
@@ -47,7 +51,7 @@ let jQuery = window['$'];
     MatIconModule
   ],
 
-  providers: [{ provide: JQ_TOKEN, useValue: jQuery }],
+  providers: [SideNavService],
   bootstrap: [AppComponent]
 })
 
