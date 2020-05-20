@@ -12,8 +12,8 @@ export interface ISignUp {
     businessTel: string;
     website: string;
     businessNature: string;
-    newPassword: string;
-    confirmPassword: string;
+    newPassword?: string;
+    confirmPassword?: string;
 }
 
 export interface IUser {

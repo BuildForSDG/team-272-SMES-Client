@@ -1,0 +1,375 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div view-toggle class="form-container">
+                <div class="col-md-4">
+                    <div class="reg-nav">
+                        <div class="card">
+                            <a [routerLink]="['/user/profile']" class="stretched-link view-links"
+                                routerLinkActive="active">
+                                <h2>
+                                    <span class="step-text">About Business</span>
+                                    <span>
+                                        <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
+                                    </span>
+                                </h2>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a [routerLink]="['/user/profile']" class="stretched-link view-links"
+                                routerLinkActive="active">
+                                <h2>
+                                    <span class="step-text">Financial Information</span>
+                                    <span>
+                                        <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
+                                    </span>
+
+                                </h2>
+                            </a>
+                        </div>
+                        <div class="card">
+                            <a [routerLink]="['/user/profile']" class="stretched-link view-links"
+                                routerLinkActive="active">
+                                <h2>
+                                    <span class="step-text">Acknowledgment</span>
+                                    <span>
+                                        <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
+                                    </span>
+
+                                </h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- FORM -->
+                <div class="col-md-6">
+                    <h2>Complete your profile</h2>
+                    <hr>
+                    <form [formGroup]="completeProfileForm" (ngSubmit)="saveUserInfo(completeProfileForm.value)"
+                        autocomplete="off" novalidate>
+                        <!-- SECTION 1 -->
+
+                        <section class="view" id="owner-view">
+                            <div class="inner">
+                                <div class="wizard-header">
+                                    <h3 class="heading">Managerial Information</h3>
+                                    <p>Please enter your infomation and proceed to the next step so we can build your
+                                        account</p>
+                                </div>
+                                <!--General Information-->
+                                <section>
+                                    <h4>General Information</h4>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-5"
+                                            [ngClass]="{'error': dateOfOps.touched && dateOfOps.invalid}">
+                                            <label for="dateOfOps">Date business began operations</label>
+                                            <em>*</em>
+                                            <em *ngIf="dateOfOps.touched && dateOfOps.invalid">Required</em>
+                                            <input name="dateOfOps" class="form-control" type="date"
+                                                formControlName="dateOfOps" id="dateOfOps" required />
+                                        </div>
+                                        <div class="form-group col-md-2"
+                                            [ngClass]="{'error': employees.touched && employees.invalid}">
+                                            <label for="employees">Existing number of employees</label>
+                                            <em>*</em>
+                                            <em *ngIf="employees.touched && employees.invalid">Required</em>
+                                            <input class="form-control" name="employees" formControlName="employees"
+                                                id="employees" type="number" required />
+                                        </div>
+                                        <div class="form-group col-md-2"
+                                            [ngClass]="{'error': jobs.touched && jobs.invalid}">
+                                            <label for="jobs">Number of jobs to be created</label>
+                                            <em>*</em>
+                                            <em *ngIf="jobs.touched && jobs.invalid">Required</em>
+                                            <input name="jobs" class="form-control" type="number"
+                                                placeholder="Enter your jobs number" formControlName="jobs" id="jobs"
+                                                required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" [ngClass]="{'error': banks.touched && banks.invalid}">
+                                        <label for="banks">Name of bank(s) where business accounts are held</label>
+                                        <em class="required" *ngIf="!banks.errors?.pattern">*</em>
+                                        <em
+                                            *ngIf="banks.touched && banks.invalid && !banks.errors?.pattern">Required</em>
+                                        <em *ngIf="banks.touched && banks.invalid && banks.errors?.pattern">Enter Valid
+                                            banks Address</em>
+                                        <input name="banks" class="form-control" type="banks"
+                                            placeholder="Enter your banks address" formControlName="banks" id="banks"
+                                            required />
+                                    </div>
+                                </section>
+                                <!--Directors-->
+                                <section>
+                                    <h4>Directors</h4>
+                                    <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
+                                        <label for="fullName">Full Name</label>
+                                        <em>*</em>
+                                        <em *ngIf="fullName.touched && fullName.invalid">Required</em>
+                                        <input name="fullName" class="form-control" type="text"
+                                            placeholder="Enter your Full Name here" formControlName="fullName"
+                                            id="fullName" required />
+                                    </div>
+                                    <div class="form-group" [ngClass]="{'error': idn.touched && idn.invalid}">
+                                        <label for="idn">NIN/Passport</label>
+                                        <em>*</em>
+                                        <em *ngIf="idn.touched && idn.invalid">Required</em>
+                                        <input name="idn" class="form-control" type="text"
+                                            placeholder="Enter your ID number here" formControlName="idn" id="idn"
+                                            required />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-7"
+                                            [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
+                                            <label for="physicalAddress">Physical Address</label>
+                                            <em>*</em>
+                                            <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
+                                            <input name="physicalAddress" class="form-control" type="text"
+                                                placeholder="Enter your Physical Address"
+                                                formControlName="physicalAddress" id="physicalAddress" required />
+                                        </div>
+                                        <div class="form-group col-md-6"
+                                            [ngClass]="{'error': phone.touched && phone.invalid}">
+                                            <label for="phone">Phone Number</label>
+                                            <em>*</em>
+                                            <em *ngIf="phone.touched && phone.invalid">Required</em>
+                                            <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
+                                            <input name="phone" class="form-control" type="tel"
+                                                placeholder="Enter your phone number" formControlName="phone" id="phone"
+                                                required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
+                                        <label for="email">Email Address</label>
+                                        <em class="required" *ngIf="!email.errors?.pattern">*</em>
+                                        <em
+                                            *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
+                                        <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
+                                            Email Address</em>
+                                        <input name="email" class="form-control" type="email"
+                                            placeholder="Enter your email address" formControlName="email" id="email"
+                                            required />
+                                    </div>
+                                </section>
+                                <!--Shareholders-->
+                                <section>
+                                    <h4>Shareholders</h4>
+                                    <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
+                                        <label for="fullName">Full Name</label>
+                                        <em>*</em>
+                                        <em *ngIf="fullName.touched && fullName.invalid">Required</em>
+                                        <input name="fullName" class="form-control" type="text"
+                                            placeholder="Enter your Full Name here" formControlName="fullName"
+                                            id="fullName" required />
+                                    </div>
+                                    <div class="form-group" [ngClass]="{'error': idn.touched && idn.invalid}">
+                                        <label for="idn">NIN/Passport</label>
+                                        <em>*</em>
+                                        <em *ngIf="idn.touched && idn.invalid">Required</em>
+                                        <input name="idn" class="form-control" type="text"
+                                            placeholder="Enter your ID number here" formControlName="idn" id="idn"
+                                            required />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-7"
+                                            [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
+                                            <label for="physicalAddress">Physical Address</label>
+                                            <em>*</em>
+                                            <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
+                                            <input name="physicalAddress" class="form-control" type="text"
+                                                placeholder="Enter your Physical Address"
+                                                formControlName="physicalAddress" id="physicalAddress" required />
+                                        </div>
+                                        <div class="form-group col-md-6"
+                                            [ngClass]="{'error': phone.touched && phone.invalid}">
+                                            <label for="phone">Phone Number</label>
+                                            <em>*</em>
+                                            <em *ngIf="phone.touched && phone.invalid">Required</em>
+                                            <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
+                                            <input name="phone" class="form-control" type="tel"
+                                                placeholder="Enter your phone number" formControlName="phone" id="phone"
+                                                required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
+                                        <label for="email">Email Address</label>
+                                        <em class="required" *ngIf="!email.errors?.pattern">*</em>
+                                        <em
+                                            *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
+                                        <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
+                                            Email Address</em>
+                                        <input name="email" class="form-control" type="email"
+                                            placeholder="Enter your email address" formControlName="email" id="email"
+                                            required />
+                                    </div>
+                                    <div class="form-group" [ngClass]="{'error': share.touched && share.invalid}">
+                                        <label for="share">Share percentage</label>
+                                        <em class="required" *ngIf="!share.errors?.pattern">*</em>
+                                        <em *ngIf="share.touched && share.invalid">Required</em>
+                                        <input name="share" class="form-control" type="number"
+                                            placeholder="Enter share percentage" formControlName="email" id="email"
+                                            required />
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+                        <!-- SECTION 2 -->
+                        <section class="view" id="business-view">
+                            <div class="inner">
+                                <div class="wizard-header">
+                                    <h3 class="heading">Financial Plan</h3>
+                                    <p>Please enter your infomation and proceed to the next step so we can build your
+                                        account.</p>
+                                </div>
+                                <!-- Funding -->
+                                <section>
+                                    <h4>Funding</h4>
+                                    <div class="form-row">
+
+                                        <div class="form-group col-md-12"
+                                            [ngClass]="{'error': description.touched && description.invalid}">
+                                            <label for="description">Description</label>
+                                            <em>*</em>
+                                            <em *ngIf="description.touched && description.invalid">Required</em>
+                                            <textarea name="description" class="form-control" type="text" rows="3"
+                                                placeholder="Enter your Full Name here" formControlName="description"
+                                                id="fullName" required></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="loanAmount">Loan Amount</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+                                            <input class="form-control" type="number" formControlName="loanAmount"
+                                                id="loanAmount" name="loanAmount" required />
+    
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="contribution">Your contribution</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+    
+                                            <input class="form-control" type="number" formControlName="contribution"
+                                                id="contribution" name="contribution" required />
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="total">Total</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+    
+                                            <input class="form-control" type="number" formControlName="total" id="total"
+                                                name="total" required />
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- Business Debt -->
+                                <section>
+                                    <h4>Business Debt</h4>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="newPassword">New Password</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="confirmPassword">Confirm Password</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+
+
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- Guarantors -->
+                                <section>
+                                    <h4>Guarantors</h4>
+                                    <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
+                                        <label for="fullName">Full Name</label>
+                                        <em>*</em>
+                                        <em *ngIf="fullName.touched && fullName.invalid">Required</em>
+                                        <input name="fullName" class="form-control" type="text"
+                                            placeholder="Enter your Full Name here" formControlName="fullName"
+                                            id="fullName" required />
+                                    </div>
+                                    <div class="form-group" [ngClass]="{'error': idn.touched && idn.invalid}">
+                                        <label for="idn">NIN/Passport</label>
+                                        <em>*</em>
+                                        <em *ngIf="idn.touched && idn.invalid">Required</em>
+                                        <input name="idn" class="form-control" type="text"
+                                            placeholder="Enter your ID number here" formControlName="idn" id="idn"
+                                            required />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-7"
+                                            [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
+                                            <label for="physicalAddress">Physical Address</label>
+                                            <em>*</em>
+                                            <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
+                                            <input name="physicalAddress" class="form-control" type="text"
+                                                placeholder="Enter your Physical Address"
+                                                formControlName="physicalAddress" id="physicalAddress" required />
+                                        </div>
+                                        <div class="form-group col-md-6"
+                                            [ngClass]="{'error': phone.touched && phone.invalid}">
+                                            <label for="phone">Phone Number</label>
+                                            <em>*</em>
+                                            <em *ngIf="phone.touched && phone.invalid">Required</em>
+                                            <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
+                                            <input name="phone" class="form-control" type="tel"
+                                                placeholder="Enter your phone number" formControlName="phone" id="phone"
+                                                required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
+                                        <label for="email">Email Address</label>
+                                        <em class="required" *ngIf="!email.errors?.pattern">*</em>
+                                        <em
+                                            *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
+                                        <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
+                                            Email Address</em>
+                                        <input name="email" class="form-control" type="email"
+                                            placeholder="Enter your email address" formControlName="email" id="email"
+                                            required />
+                                    </div>
+
+                                </section>
+
+                            </div>
+
+                        </section>
+                        <!-- SECTION 3 -->
+                        <section class="view" id="cred-view">
+                            <div class="inner">
+                                <div class="wizard-header">
+                                    <h3 class="heading">Acknowledgment</h3>
+                                    <p>Almost there!</p>
+                                </div>
+                                [Acknowledge info entered valid]
+                            </div>
+                        </section>
+                        <span class="btnGrp" (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+                            <div id="btn-group" class="form-group">
+                                <span class="nav-btn-group">
+                                    <button type="button" id="back" class="btn btn-warning">
+                                        <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
+                                    </button>
+                                    <button style="float: right;" type="button" id="next" class="btn btn-success">
+                                        <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon>
+                                    </button>
+                                </span>
+                                <span class="submit-btn-group" style="float:right">
+                                    <button type="submit" class="btn btn-primary"
+                                        [disabled]="completeProfileForm.invalid">Submit</button>
+                                    <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                                </span>
+                            </div>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
