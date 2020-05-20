@@ -60,7 +60,7 @@
                                 <section>
                                     <h4>General Information</h4>
                                     <div class="form-row">
-                                        <div class="form-group col-md-5"
+                                        <div class="form-group col-md-12"
                                             [ngClass]="{'error': dateOfOps.touched && dateOfOps.invalid}">
                                             <label for="dateOfOps">Date business began operations</label>
                                             <em>*</em>
@@ -68,7 +68,7 @@
                                             <input name="dateOfOps" class="form-control" type="date"
                                                 formControlName="dateOfOps" id="dateOfOps" required />
                                         </div>
-                                        <div class="form-group col-md-2"
+                                        <div class="form-group col-md-12"
                                             [ngClass]="{'error': employees.touched && employees.invalid}">
                                             <label for="employees">Existing number of employees</label>
                                             <em>*</em>
@@ -76,7 +76,7 @@
                                             <input class="form-control" name="employees" formControlName="employees"
                                                 id="employees" type="number" required />
                                         </div>
-                                        <div class="form-group col-md-2"
+                                        <div class="form-group col-md-12"
                                             [ngClass]="{'error': jobs.touched && jobs.invalid}">
                                             <label for="jobs">Number of jobs to be created</label>
                                             <em>*</em>
@@ -243,13 +243,13 @@
                                             <em>Required</em>
                                             <input class="form-control" type="number" formControlName="loanAmount"
                                                 id="loanAmount" name="loanAmount" required />
-    
+
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="col-form-label" for="contribution">Your contribution</label>
                                             <em>*</em>
                                             <em>Required</em>
-    
+
                                             <input class="form-control" type="number" formControlName="contribution"
                                                 id="contribution" name="contribution" required />
                                         </div>
@@ -257,7 +257,7 @@
                                             <label class="col-form-label" for="total">Total</label>
                                             <em>*</em>
                                             <em>Required</em>
-    
+
                                             <input class="form-control" type="number" formControlName="total" id="total"
                                                 name="total" required />
                                         </div>
@@ -268,17 +268,100 @@
                                     <h4>Business Debt</h4>
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
-                                            <label class="col-form-label" for="newPassword">New Password</label>
+                                            <label class="col-form-label" for="lender">Lender</label>
                                             <em>*</em>
                                             <em>Required</em>
-
+                                            <input class="form-control" type="text" formControlName="lender" id="lender"
+                                                name="lender" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label class="col-form-label" for="balance">Present balance</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+                                            <input class="form-control" type="number" formControlName="balance"
+                                                id="balance" name="balance" required />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="col-form-label" for="rate">%interest rate</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+                                            <input class="form-control" type="number" formControlName="rate" id="rate"
+                                                name="rate" required />
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="col-form-label" for="payment">Monthly payment</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+                                            <input class="form-control" type="number" formControlName="payment"
+                                                id="payment" name="payment" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="security">Security Provided to
+                                                Lender</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+                                            <input class="form-control" type="text" formControlName="security"
+                                                id="security" name="security" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <fieldset class="form-group">
+                                            <div class="row">
+                                              <legend class="col-form-label col-md-2 pt-0">Defaulted</legend>
+                                              <div class="col-sm-10">
+                                                <div class="form-check">
+                                                  <input class="form-check-input" formControlName="defaulted" type="radio" name="defaulted" id="defaulted" value="defaulted">
+                                                  <label class="form-check-label" for="defaulted">
+                                                    Yes
+                                                  </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" formControlName="defaulted" type="radio" name="defaulted" id="defaulted" value="defaulted">
+                                                  <label class="form-check-label" for="defaulted">
+                                                    No
+                                                  </label>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </fieldset>
+                                          <fieldset class="form-group">
+                                            <div class="row">
+                                              <legend class="col-form-label col-md-10 pt-0">Lawsuites for non-payment</legend>
+                                              <div class="col-sm-10">
+                                                <div class="form-check">
+                                                  <input class="form-check-input" formControlName="lawsuites" type="radio" name="lawsuites" id="lawsuites" value="lawsuites" >
+                                                  <label class="form-check-label" for="lawsuites">
+                                                    Yes
+                                                  </label>
+                                                </div>
+                                                <div class="form-check">
+                                                  <input class="form-check-input" formControlName="lawsuites" type="radio" name="lawsuites" id="lawsuites" value="lawsuites">
+                                                  <label class="form-check-label" for="lawsuites">
+                                                    No
+                                                  </label>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </fieldset>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-form-label" for="reason">Reason(s) for defaulting</label>
+                                            <em>*</em>
+                                            <em>Required</em>
+                                            <textarea class="form-control" type="text" formControlName="reason" id="reason"
+                                                name="reason" rows="3" required></textarea>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label class="col-form-label" for="confirmPassword">Confirm Password</label>
+                                            <label class="col-form-label" for="case">Case Status</label>
                                             <em>*</em>
                                             <em>Required</em>
-
-
+                                            <input class="form-control" type="text" formControlName="case" id="case"
+                                                name="case" required />
                                         </div>
                                     </div>
                                 </section>

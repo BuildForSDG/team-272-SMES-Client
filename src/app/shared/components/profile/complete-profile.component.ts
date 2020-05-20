@@ -28,6 +28,15 @@ export class CompleteProfileComponent implements OnInit{
     phone: FormControl;
     contribution: FormControl;
     physicalAddress: FormControl;
+    lender: FormControl;
+    balance: FormControl;
+    rate: FormControl;
+    payment: FormControl;
+    security: FormControl;
+    defaulted: FormControl;
+    reason: FormControl;
+    lawsuites: FormControl;
+    case: FormControl;
 
     constructor(private signUp: SignUpService, private router: Router) { }
 
@@ -46,8 +55,26 @@ export class CompleteProfileComponent implements OnInit{
         this.jobs = new FormControl('', [Validators.required]);
         this.phone = new FormControl('', [Validators.required]);
         this.physicalAddress = new FormControl('', [Validators.required]);
+        this.lender = new FormControl('', [Validators.required]);
+        this.balance = new FormControl('', [Validators.required]);
+        this.rate = new FormControl('', [Validators.required]);
+        this.payment = new FormControl('', [Validators.required]);
+        this.security = new FormControl('', [Validators.required]);
+        this.defaulted = new FormControl('', [Validators.required]);
+        this.reason = new FormControl('', [Validators.required]);
+        this.lawsuites = new FormControl('', [Validators.required]);
+        this.case = new FormControl('', [Validators.required]);
 
         this.completeProfileForm = new FormGroup({
+            lender: this.lender,
+            balance: this.balance,
+            rate: this.rate,
+            payment: this.payment,
+            security: this.security,
+            defaulted: this.defaulted,
+            reason: this.reason,
+            lawsuites: this.lawsuites,
+            case: this.case,
             fullName: this.fullName,
             dateOfOps: this.dateOfOps,
             share: this.share,
