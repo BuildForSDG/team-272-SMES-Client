@@ -1,3 +1,4 @@
+import { SideNavService } from './shared/services/side-nav.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +26,10 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/side-nav-toggler.component';
+import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
 
 
 @NgModule({
@@ -37,6 +42,10 @@ import { environment } from '../environments/environment';
     SmesComponent,
     FooterComponent,
     SignInComponent,
+    SideNavTogglerComponent,
+    SmesDashboardComponent,
+    NavbarComponent,
+    SideNavComponent
   ],
 
   imports: [
@@ -55,7 +64,7 @@ import { environment } from '../environments/environment';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
 
-  providers: [AuthService],
+  providers: [AuthService, SideNavService],
   bootstrap: [AppComponent]
 })
 
