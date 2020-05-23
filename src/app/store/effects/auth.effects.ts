@@ -27,7 +27,7 @@ export class AuthEffects {
         .pipe(
           map(user => {
             console.log(user);
-            return new LogInSuccess({ token: user.token, email: payload.email });
+            return new LogInSuccess({ token: user.token, email: user.email });
           }),
           catchError(error => {
             console.error(error);
