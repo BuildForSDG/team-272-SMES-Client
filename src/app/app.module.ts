@@ -14,11 +14,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
-import { FundersComponent } from './components/funders/funders.component';
-import { SmesComponent } from './components/smes/smes.component';
+import { FundersComponent } from './components/dashboard/funders/funders.component';
+import { SmesComponent } from './components/dashboard/smes/smes.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { NewsComponent } from './news/news.component';
+import { AddfunderComponent } from './components/dashboard/addfunder/addfunder.component';
+import { EditfunderComponent } from './components/dashboard/editfunder/editfunder.component';
+import { AddSMEComponent } from './components/dashboard/add-sme/add-sme.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,9 @@ import { NewsComponent } from './news/news.component';
     NavbarComponent,
     SignInComponent,
     NewsComponent,
+    AddfunderComponent,
+    EditfunderComponent,
+    AddSMEComponent,
     
   ],
 
