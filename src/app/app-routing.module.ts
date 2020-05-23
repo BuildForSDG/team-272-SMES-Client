@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
@@ -11,12 +11,17 @@ import { AddfunderComponent } from './components/dashboard/addfunder/addfunder.c
 import { EditfunderComponent } from './components/dashboard/editfunder/editfunder.component';
 import { AddSMEComponent} from './components/dashboard/add-sme/add-sme.component';
 import { FunderdetailsComponent } from './components/dashboard/funderdetails/funderdetails.component';
+import { UserModule } from './components/user/user.module';
+import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent },
+  { path: '', component: HomePageComponent },
+  { path: 'smes-dashboard', component: SmesDashboardComponent},
+  { path: 'user', loadChildren: () => UserModule },
 
   { path: 'dashboard', component: DashboardComponent,
     children: [
+
       { path: 'Overview', component: OverviewComponent},
       { path: 'Funders', component: FundersComponent},
       { path: 'Smes', component: SmesComponent},
@@ -28,6 +33,7 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent},
   { path: 'news', component: NewsComponent}
   ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

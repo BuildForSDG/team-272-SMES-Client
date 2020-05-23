@@ -5,12 +5,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule} from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { RouterModule, Router} from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { rootRouterConfig } from './app.routes';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
@@ -23,6 +25,12 @@ import { AddfunderComponent } from './components/dashboard/addfunder/addfunder.c
 import { EditfunderComponent } from './components/dashboard/editfunder/editfunder.component';
 import { AddSMEComponent } from './components/dashboard/add-sme/add-sme.component';
 import { FunderdetailsComponent } from './components/dashboard/funderdetails/funderdetails.component';
+import { SideNavService } from './shared/services/side-nav.service';
+import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/side-nav-toggler.component';
+import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +46,12 @@ import { FunderdetailsComponent } from './components/dashboard/funderdetails/fun
     EditfunderComponent,
     AddSMEComponent,
     FunderdetailsComponent,
-    
+    FooterComponent,
+    SignInComponent,
+    SideNavTogglerComponent,
+    SmesDashboardComponent,
+    NavbarComponent,
+    SideNavComponent
   ],
 
   entryComponents: [],
@@ -48,6 +61,8 @@ import { FunderdetailsComponent } from './components/dashboard/funderdetails/fun
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
@@ -55,7 +70,8 @@ import { FunderdetailsComponent } from './components/dashboard/funderdetails/fun
     HttpClientModule,
   ],
 
-  providers: [],
+  providers: [SideNavService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
