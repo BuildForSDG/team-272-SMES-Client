@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpService } from 'src/app/components/user';
 import { ISignUp } from 'src/app/components/user/user.model';
@@ -10,24 +10,38 @@ import { ISignUp } from 'src/app/components/user/user.model';
     styleUrls: ['./complete-profile.component.scss']
 })
 
-export class CompleteProfileComponent implements OnInit{
+export class CompleteProfileComponent implements OnInit {
 
     completeProfileForm: FormGroup;
+    banks: FormArray;
+    directors: FormArray;
+    shareholders: FormArray;
+    guarantors: FormArray;
+    lenders: FormArray;
+    dFullName: FormControl;
+    dIDn: FormControl;
+    dEmail: FormControl;
+    dPhone: FormControl;
+    dPhysicalAddress: FormControl;
+    sFullName: FormControl;
+    sIDn: FormControl;
+    sEmail: FormControl;
+    sPhone: FormControl;
+    sPhysicalAddress: FormControl;
+    share: FormControl;
+    gFullName: FormControl;
+    gIDn: FormControl;
+    gEmail: FormControl;
+    gPhone: FormControl;
+    gPhysicalAddress: FormControl;
     mouseOver: boolean;
     dateOfOps: FormControl;
     employees: FormControl;
     description: FormControl;
     jobs: FormControl;
-    banks: FormControl;
-    fullName: FormControl;
-    idn: FormControl;
-    share: FormControl;
     loanAmount: FormControl;
     total: FormControl;
-    email: FormControl;
-    phone: FormControl;
     contribution: FormControl;
-    physicalAddress: FormControl;
     lender: FormControl;
     balance: FormControl;
     rate: FormControl;
@@ -41,20 +55,18 @@ export class CompleteProfileComponent implements OnInit{
     constructor(private signUp: SignUpService, private router: Router) { }
 
     ngOnInit() {
-        this.fullName = new FormControl('', [Validators.required]);
         this.dateOfOps = new FormControl('', [Validators.required]);
-        this.share = new FormControl('', [Validators.required]);
-        this.idn = new FormControl('', [Validators.required]);
-        this.email = new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
         this.employees = new FormControl('', [Validators.required]);
         this.loanAmount = new FormControl('', [Validators.required]);
         this.total = new FormControl('', [Validators.required]);
         this.contribution = new FormControl('', [Validators.required]);
         this.description = new FormControl('', [Validators.required]);
-        this.banks = new FormControl('', [Validators.required]);
+        this.banks = new FormArray([]);
+        this.directors = new FormArray([]);
+        this.shareholders = new FormArray([]);
+        this.guarantors = new FormArray([]);
+        this.lenders = new FormArray([]);
         this.jobs = new FormControl('', [Validators.required]);
-        this.phone = new FormControl('', [Validators.required]);
-        this.physicalAddress = new FormControl('', [Validators.required]);
         this.lender = new FormControl('', [Validators.required]);
         this.balance = new FormControl('', [Validators.required]);
         this.rate = new FormControl('', [Validators.required]);
@@ -75,24 +87,113 @@ export class CompleteProfileComponent implements OnInit{
             reason: this.reason,
             lawsuites: this.lawsuites,
             case: this.case,
-            fullName: this.fullName,
+            directors: this.directors,
+            guarantors: this.guarantors,
+            lenders: this.lenders,
+            shareholders: this.shareholders,
+            banks: this.banks,
             dateOfOps: this.dateOfOps,
-            share: this.share,
-            idn: this.idn,
-            email: this.email,
             employees: this.employees,
             loanAmount: this.loanAmount,
             total: this.total,
             contribution: this.contribution,
             description: this.description,
-            banks: this.banks,
             jobs: this.jobs,
-            phone: this.phone,
-            physicalAddress: this.physicalAddress
         });
     }
 
+    addBanks() {
+        this.banks.push(new FormControl('', Validators.required));
+    }
+
+    removeBanks(index) {
+        this.banks.removeAt(index);
+    }
+
+    clearBanks() {
+        this.banks.clear();
+    }
+
+    addDirectors() {
+        this.dFullName = new FormControl('');
+        this.dIDn = new FormControl('');
+        this.dPhone = new FormControl('');
+        this.dEmail = new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
+        this.dPhysicalAddress = new FormControl('');
+        const director = new FormGroup({
+            dFullName: this.dFullName,
+            dIDn: this.dIDn,
+            dPhone: this.dPhone,
+            dEmail: this.dEmail,
+            dPhysicalAddress: this.dPhysicalAddress
+        }, Validators.required);
+
+        this.directors.push(director);
+    }
+
+    removeDirector(index) {
+        this.directors.removeAt(index);
+    }
+
+    clearDirectors() {
+        this.directors.clear();
+    }
+
+    addGuarantors() {
+        this.gFullName = new FormControl('');
+        this.gIDn = new FormControl('');
+        this.gPhone = new FormControl('');
+        this.gEmail = new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
+        this.gPhysicalAddress = new FormControl('');
+        const guarantor = new FormGroup({
+            gFullName: this.gFullName,
+            gIDn: this.gIDn,
+            gPhone: this.gPhone,
+            gEmail: this.gEmail,
+            gPhysicalAddress: this.gPhysicalAddress
+        }, Validators.required);
+
+        this.guarantors.push(guarantor);
+    }
+
+    removeGuarantor(index) {
+        this.guarantors.removeAt(index);
+    }
+
+    clearGuarantors() {
+        this.guarantors.clear();
+    }
+
+    addShareholders() {
+        this.sFullName = new FormControl('');
+        this.sIDn = new FormControl('');
+        this.sPhone = new FormControl('');
+        this.sEmail = new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
+        this.sPhysicalAddress = new FormControl('');
+        this.share = new FormControl('');
+
+        const shareholder = new FormGroup({
+            sFullName: this.sFullName,
+            sIDn: this.sIDn,
+            sPhone: this.sPhone,
+            sEmail: this.sEmail,
+            sPhysicalAddress: this.sPhysicalAddress,
+            share: this.share
+        }, Validators.required);
+
+        this.shareholders.push(shareholder);
+    }
+
+    removeShareholder(index) {
+        this.shareholders.removeAt(index);
+    }
+
+    clearShareholders() {
+        this.shareholders.clear();
+    }
+
     saveUserInfo(data: ISignUp) {
+        console.log('data', this.completeProfileForm.value);
         if (this.completeProfileForm.valid) {
             const completeProfileForm: ISignUp = {
                 fullName: data.fullName,
@@ -120,7 +221,7 @@ export class CompleteProfileComponent implements OnInit{
     }
 
     cancel() {
-        this.router.navigate(['']);
+        this.router.navigate(['user/profile']);
     }
 
 }

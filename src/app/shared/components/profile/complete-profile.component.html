@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <!-- FORM -->
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <h2>Complete your profile</h2>
                     <hr>
                     <form [formGroup]="completeProfileForm" (ngSubmit)="saveUserInfo(completeProfileForm.value)"
@@ -81,136 +81,225 @@
                                             <label for="jobs">Number of jobs to be created</label>
                                             <em>*</em>
                                             <em *ngIf="jobs.touched && jobs.invalid">Required</em>
-                                            <input name="jobs" class="form-control" type="number"
-                                                placeholder="Enter your jobs number" formControlName="jobs" id="jobs"
-                                                required />
+                                            <input name="jobs" class="form-control" type="number" placeholder="Jobs"
+                                                formControlName="jobs" id="jobs" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-array-container" formArrayName="banks">
+                                        <div class="form-array-heading">
+                                            <h4>Banks</h4>
+                                            <div class="field-btn">
+                                                <button class="btn btn-success" (click)="addBanks()">
+                                                    <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="clearBanks()">
+                                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <label for="banks">Name of bank(s) where business accounts are held</label>
+                                        <div class="form-group" *ngFor="let banks of banks.controls; let i=index"
+                                            [ngClass]="{'error': banks.touched && banks.invalid}">
+                                            <em class="required">*</em>
+                                            <em *ngIf="banks.touched && banks.invalid">Required</em>
+                                            <div class="input-group">
+                                                <input name="banks" class="form-control" type="banks"
+                                                    placeholder="bank name" [formControlName]="i" id="banks" required />
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-warning" (click)="removeBanks(i)">
+                                                        <fa-icon [icon]="['fas', 'minus-circle']"></fa-icon>
+                                                    </button>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
 
-                                    <div class="form-group" [ngClass]="{'error': banks.touched && banks.invalid}">
-                                        <label for="banks">Name of bank(s) where business accounts are held</label>
-                                        <em class="required" *ngIf="!banks.errors?.pattern">*</em>
-                                        <em
-                                            *ngIf="banks.touched && banks.invalid && !banks.errors?.pattern">Required</em>
-                                        <em *ngIf="banks.touched && banks.invalid && banks.errors?.pattern">Enter Valid
-                                            banks Address</em>
-                                        <input name="banks" class="form-control" type="banks"
-                                            placeholder="Enter your banks address" formControlName="banks" id="banks"
-                                            required />
-                                    </div>
                                 </section>
                                 <!--Directors-->
                                 <section>
-                                    <h4>Directors</h4>
-                                    <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
-                                        <label for="fullName">Full Name</label>
-                                        <em>*</em>
-                                        <em *ngIf="fullName.touched && fullName.invalid">Required</em>
-                                        <input name="fullName" class="form-control" type="text"
-                                            placeholder="Enter your Full Name here" formControlName="fullName"
-                                            id="fullName" required />
-                                    </div>
-                                    <div class="form-group" [ngClass]="{'error': idn.touched && idn.invalid}">
-                                        <label for="idn">NIN/Passport</label>
-                                        <em>*</em>
-                                        <em *ngIf="idn.touched && idn.invalid">Required</em>
-                                        <input name="idn" class="form-control" type="text"
-                                            placeholder="Enter your ID number here" formControlName="idn" id="idn"
-                                            required />
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-7"
-                                            [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
-                                            <label for="physicalAddress">Physical Address</label>
-                                            <em>*</em>
-                                            <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
-                                            <input name="physicalAddress" class="form-control" type="text"
-                                                placeholder="Enter your Physical Address"
-                                                formControlName="physicalAddress" id="physicalAddress" required />
+                                    <div class="form-array-container" formArrayName="directors">
+                                        <div class="form-array-heading">
+                                            <h4>Directors</h4>
+                                            <div class="field-btn">
+                                                <button class="btn btn-success" (click)="addDirectors()">
+                                                    <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="clearDirectors()">
+                                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6"
-                                            [ngClass]="{'error': phone.touched && phone.invalid}">
-                                            <label for="phone">Phone Number</label>
-                                            <em>*</em>
-                                            <em *ngIf="phone.touched && phone.invalid">Required</em>
-                                            <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
-                                            <input name="phone" class="form-control" type="tel"
-                                                placeholder="Enter your phone number" formControlName="phone" id="phone"
-                                                required />
-                                        </div>
-                                    </div>
+                                        <div class="card" *ngFor="let director of directors.controls; index as i">
+                                            <div class="card-body">
+                                                <div [formGroup]="director">
+                                                    <div class="item-header">
+                                                        <h5 class="card-title">Director {{i+1}}</h5>
+                                                        <button class="btn btn-warning" (click)="removeDirector(i)">
+                                                            <fa-icon [icon]="['fas', 'minus-circle']"></fa-icon>
+                                                        </button>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': dFullName.touched && dFullName.invalid}">
+                                                            <label for="dFullName">Full Name</label>
+                                                            <em>*</em>
+                                                            <em
+                                                                *ngIf="dFullName.touched && dFullName.invalid">Required</em>
+                                                            <input name="dFullName" class="form-control" type="text"
+                                                                placeholder="Full Name" formControlName="dFullName"
+                                                                id="dFullName" required />
+                                                        </div>
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': dIDn.touched && dIDn.invalid}">
+                                                            <label for="dIDn">NIN/Passport</label>
+                                                            <em>*</em>
+                                                            <em *ngIf="dIDn.touched && dIDn.invalid">Required</em>
+                                                            <input name="dIDn" class="form-control" type="text"
+                                                                placeholder="NIN/Passport" formControlName="dIDn"
+                                                                id="dIDn" required />
 
-                                    <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
-                                        <label for="email">Email Address</label>
-                                        <em class="required" *ngIf="!email.errors?.pattern">*</em>
-                                        <em
-                                            *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
-                                        <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
-                                            Email Address</em>
-                                        <input name="email" class="form-control" type="email"
-                                            placeholder="Enter your email address" formControlName="email" id="email"
-                                            required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12"
+                                                            [ngClass]="{'error': dPhysicalAddress.touched && dPhysicalAddress.invalid}">
+                                                            <label for="dPhysicalAddress">Physical Address</label>
+                                                            <em>*</em>
+                                                            <em
+                                                                *ngIf="dPhysicalAddress.touched && dPhysicalAddress.invalid">Required</em>
+                                                            <input name="dPhysicalAddress" class="form-control"
+                                                                type="text" placeholder="Physical Address"
+                                                                formControlName="dPhysicalAddress" id="dPhysicalAddress"
+                                                                required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': dPhone.touched && dPhone.invalid}">
+                                                            <label for="dPhone">Phone Number</label>
+                                                            <em>*</em>
+                                                            <em *ngIf="dPhone.touched && dPhone.invalid">Required</em>
+                                                            <!--<em *ngIf="dPhone.errors.invaliddPhone">Enter a valid dPhone number</em>-->
+                                                            <input name="dPhone" class="form-control" type="tel"
+                                                                placeholder="Phone number" formControlName="dPhone"
+                                                                id="dPhone" required />
+                                                        </div>
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': dEmail.touched && dEmail.invalid}">
+                                                            <label for="dEmail">Email Address</label>
+                                                            <em class="required" *ngIf="!dEmail.errors?.pattern">*</em>
+                                                            <em
+                                                                *ngIf="dEmail.touched && dEmail.invalid && !dEmail.errors?.pattern">Required</em>
+                                                            <em
+                                                                *ngIf="dEmail.touched && dEmail.invalid && dEmail.errors?.pattern">Enter
+                                                                Valid
+                                                                Email Address</em>
+                                                            <input name="dEmail" class="form-control" type="dEmail"
+                                                                placeholder="Email" formControlName="dEmail" id="dEmail"
+                                                                required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
                                 <!--Shareholders-->
                                 <section>
-                                    <h4>Shareholders</h4>
-                                    <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
-                                        <label for="fullName">Full Name</label>
-                                        <em>*</em>
-                                        <em *ngIf="fullName.touched && fullName.invalid">Required</em>
-                                        <input name="fullName" class="form-control" type="text"
-                                            placeholder="Enter your Full Name here" formControlName="fullName"
-                                            id="fullName" required />
-                                    </div>
-                                    <div class="form-group" [ngClass]="{'error': idn.touched && idn.invalid}">
-                                        <label for="idn">NIN/Passport</label>
-                                        <em>*</em>
-                                        <em *ngIf="idn.touched && idn.invalid">Required</em>
-                                        <input name="idn" class="form-control" type="text"
-                                            placeholder="Enter your ID number here" formControlName="idn" id="idn"
-                                            required />
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-7"
-                                            [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
-                                            <label for="physicalAddress">Physical Address</label>
-                                            <em>*</em>
-                                            <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
-                                            <input name="physicalAddress" class="form-control" type="text"
-                                                placeholder="Enter your Physical Address"
-                                                formControlName="physicalAddress" id="physicalAddress" required />
+                                    <div class="form-array-container" formArrayName="shareholders">
+                                        <div class="form-array-heading">
+                                            <h4>Shareholders</h4>
+                                            <div class="field-btn">
+                                                <button class="btn btn-success" (click)="addShareholders()">
+                                                    <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="clearShareholders()">
+                                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6"
-                                            [ngClass]="{'error': phone.touched && phone.invalid}">
-                                            <label for="phone">Phone Number</label>
-                                            <em>*</em>
-                                            <em *ngIf="phone.touched && phone.invalid">Required</em>
-                                            <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
-                                            <input name="phone" class="form-control" type="tel"
-                                                placeholder="Enter your phone number" formControlName="phone" id="phone"
-                                                required />
+                                        <div class="card" *ngFor="let shareholder of shareholders.controls; index as i">
+                                            <div class="card-body">
+                                                <div [formGroup]="shareholder">
+                                                    <div class="item-header">
+                                                        <h5 class="card-title">Shareholder {{i+1}}</h5>
+                                                        <button class="btn btn-warning" (click)="removeShareholder(i)">
+                                                            <fa-icon [icon]="['fas', 'minus-circle']"></fa-icon>
+                                                        </button>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': sFullName.touched && sFullName.invalid}">
+                                                            <label for="sFullName">Full Name</label>
+                                                            <em>*</em>
+                                                            <em
+                                                                *ngIf="sFullName.touched && sFullName.invalid">Required</em>
+                                                            <input name="sFullName" class="form-control" type="text"
+                                                                placeholder="Full Name" formControlName="sFullName"
+                                                                id="sFullName" required />
+                                                        </div>
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': sIDn.touched && sIDn.invalid}">
+                                                            <label for="sIDn">NIN/Passport</label>
+                                                            <em>*</em>
+                                                            <em *ngIf="sIDn.touched && sIDn.invalid">Required</em>
+                                                            <input name="sIDn" class="form-control" type="text"
+                                                                placeholder="ID number here" formControlName="sIDn"
+                                                                id="sIDn" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': sPhysicalAddress.touched && sPhysicalAddress.invalid}">
+                                                            <label for="sPhysicalAddress">Physical Address</label>
+                                                            <em>*</em>
+                                                            <em
+                                                                *ngIf="sPhysicalAddress.touched && sPhysicalAddress.invalid">Required</em>
+                                                            <input name="sPhysicalAddress" class="form-control"
+                                                                type="text" placeholder="Physical Address"
+                                                                formControlName="sPhysicalAddress" id="sPhysicalAddress"
+                                                                required />
+                                                        </div>
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': share.touched && share.invalid}">
+                                                            <label for="share">Share percentage</label>
+                                                            <em class="required">*</em>
+                                                            <em *ngIf="share.touched && share.invalid">Required</em>
+                                                            <input name="share" class="form-control" type="number"
+                                                                placeholder="Share Percentage"
+                                                                formControlName="share" id="share" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': sPhone.touched && sPhone.invalid}">
+                                                            <label for="sPhone">Phone Number</label>
+                                                            <em>*</em>
+                                                            <em *ngIf="sPhone.touched && sPhone.invalid">Required</em>
+                                                            <!--<em *ngIf="sPhone.errors.invaliddPhone">Enter a valid Phone number</em>-->
+                                                            <input name="sPhone" class="form-control" type="tel"
+                                                                placeholder="Phone number" formControlName="sPhone"
+                                                                id="sPhone" required />
+                                                        </div>
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': sEmail.touched && sEmail.invalid}">
+                                                            <label for="sEmail">Email Address</label>
+                                                            <em class="required" *ngIf="!sEmail.errors?.pattern">*</em>
+                                                            <em
+                                                                *ngIf="sEmail.touched && sEmail.invalid && !sEmail.errors?.pattern">Required</em>
+                                                            <em
+                                                                *ngIf="sEmail.touched && sEmail.invalid && sEmail.errors?.pattern">Enter
+                                                                Valid
+                                                                Email Address</em>
+                                                            <input name="sEmail" class="form-control" type="email"
+                                                                placeholder="Email address" formControlName="sEmail"
+                                                                id="sEmail" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
-                                        <label for="email">Email Address</label>
-                                        <em class="required" *ngIf="!email.errors?.pattern">*</em>
-                                        <em
-                                            *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
-                                        <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
-                                            Email Address</em>
-                                        <input name="email" class="form-control" type="email"
-                                            placeholder="Enter your email address" formControlName="email" id="email"
-                                            required />
-                                    </div>
-                                    <div class="form-group" [ngClass]="{'error': share.touched && share.invalid}">
-                                        <label for="share">Share percentage</label>
-                                        <em class="required" *ngIf="!share.errors?.pattern">*</em>
-                                        <em *ngIf="share.touched && share.invalid">Required</em>
-                                        <input name="share" class="form-control" type="number"
-                                            placeholder="Enter share percentage" formControlName="email" id="email"
-                                            required />
                                     </div>
                                 </section>
                             </div>
@@ -234,8 +323,8 @@
                                             <em>*</em>
                                             <em *ngIf="description.touched && description.invalid">Required</em>
                                             <textarea name="description" class="form-control" type="text" rows="3"
-                                                placeholder="Enter your Full Name here" formControlName="description"
-                                                id="fullName" required></textarea>
+                                                placeholder="Full Name here" formControlName="description"
+                                                id="dFullName" required></textarea>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="col-form-label" for="loanAmount">Loan Amount</label>
@@ -311,50 +400,59 @@
                                     <div class="form-row">
                                         <fieldset class="form-group">
                                             <div class="row">
-                                              <legend class="col-form-label col-md-2 pt-0">Defaulted</legend>
-                                              <div class="col-sm-10">
-                                                <div class="form-check">
-                                                  <input class="form-check-input" formControlName="defaulted" type="radio" name="defaulted" id="defaulted" value="defaulted">
-                                                  <label class="form-check-label" for="defaulted">
-                                                    Yes
-                                                  </label>
+                                                <legend class="col-form-label col-md-2 pt-0">Defaulted</legend>
+                                                <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" formControlName="defaulted"
+                                                            type="radio" name="defaulted" id="defaulted"
+                                                            value="defaulted">
+                                                        <label class="form-check-label" for="defaulted">
+                                                            Yes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" formControlName="defaulted"
+                                                            type="radio" name="defaulted" id="defaulted"
+                                                            value="defaulted">
+                                                        <label class="form-check-label" for="defaulted">
+                                                            No
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" formControlName="defaulted" type="radio" name="defaulted" id="defaulted" value="defaulted">
-                                                  <label class="form-check-label" for="defaulted">
-                                                    No
-                                                  </label>
-                                                </div>
-                                              </div>
                                             </div>
-                                          </fieldset>
-                                          <fieldset class="form-group">
+                                        </fieldset>
+                                        <fieldset class="form-group">
                                             <div class="row">
-                                              <legend class="col-form-label col-md-10 pt-0">Lawsuites for non-payment</legend>
-                                              <div class="col-sm-10">
-                                                <div class="form-check">
-                                                  <input class="form-check-input" formControlName="lawsuites" type="radio" name="lawsuites" id="lawsuites" value="lawsuites" >
-                                                  <label class="form-check-label" for="lawsuites">
-                                                    Yes
-                                                  </label>
+                                                <legend class="col-form-label col-md-10 pt-0">Lawsuites for non-payment
+                                                </legend>
+                                                <div class="col-sm-10">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" formControlName="lawsuites"
+                                                            type="radio" name="lawsuites" id="lawsuites"
+                                                            value="lawsuites">
+                                                        <label class="form-check-label" for="lawsuites">
+                                                            Yes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" formControlName="lawsuites"
+                                                            type="radio" name="lawsuites" id="lawsuites"
+                                                            value="lawsuites">
+                                                        <label class="form-check-label" for="lawsuites">
+                                                            No
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check">
-                                                  <input class="form-check-input" formControlName="lawsuites" type="radio" name="lawsuites" id="lawsuites" value="lawsuites">
-                                                  <label class="form-check-label" for="lawsuites">
-                                                    No
-                                                  </label>
-                                                </div>
-                                              </div>
                                             </div>
-                                          </fieldset>
+                                        </fieldset>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label class="col-form-label" for="reason">Reason(s) for defaulting</label>
                                             <em>*</em>
                                             <em>Required</em>
-                                            <textarea class="form-control" type="text" formControlName="reason" id="reason"
-                                                name="reason" rows="3" required></textarea>
+                                            <textarea class="form-control" type="text" formControlName="reason"
+                                                id="reason" name="reason" rows="3" required></textarea>
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="col-form-label" for="case">Case Status</label>
@@ -367,57 +465,92 @@
                                 </section>
                                 <!-- Guarantors -->
                                 <section>
-                                    <h4>Guarantors</h4>
-                                    <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
-                                        <label for="fullName">Full Name</label>
-                                        <em>*</em>
-                                        <em *ngIf="fullName.touched && fullName.invalid">Required</em>
-                                        <input name="fullName" class="form-control" type="text"
-                                            placeholder="Enter your Full Name here" formControlName="fullName"
-                                            id="fullName" required />
-                                    </div>
-                                    <div class="form-group" [ngClass]="{'error': idn.touched && idn.invalid}">
-                                        <label for="idn">NIN/Passport</label>
-                                        <em>*</em>
-                                        <em *ngIf="idn.touched && idn.invalid">Required</em>
-                                        <input name="idn" class="form-control" type="text"
-                                            placeholder="Enter your ID number here" formControlName="idn" id="idn"
-                                            required />
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-7"
-                                            [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
-                                            <label for="physicalAddress">Physical Address</label>
-                                            <em>*</em>
-                                            <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
-                                            <input name="physicalAddress" class="form-control" type="text"
-                                                placeholder="Enter your Physical Address"
-                                                formControlName="physicalAddress" id="physicalAddress" required />
+                                    <div class="form-array-container" formArrayName="guarantors">
+                                        <div class="form-array-heading">
+                                            <h4>Guarantors</h4>
+                                            <div class="field-btn">
+                                                <button class="btn btn-success" (click)="addGuarantors()">
+                                                    <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="clearGuarantors()">
+                                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6"
-                                            [ngClass]="{'error': phone.touched && phone.invalid}">
-                                            <label for="phone">Phone Number</label>
-                                            <em>*</em>
-                                            <em *ngIf="phone.touched && phone.invalid">Required</em>
-                                            <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
-                                            <input name="phone" class="form-control" type="tel"
-                                                placeholder="Enter your phone number" formControlName="phone" id="phone"
-                                                required />
+                                        <div class="card" *ngFor="let guarantor of guarantors.controls; index as i">
+                                            <div class="card-body">
+                                                <div [formGroup]="guarantor">
+                                                    <div class="item-header">
+                                                        <h5 class="card-title">Guarantor {{i+1}}</h5>
+                                                        <button class="btn btn-warning" (click)="removeGuarantor(i)">
+                                                            <fa-icon [icon]="['fas', 'minus-circle']"></fa-icon>
+                                                        </button>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': gFullName.touched && gFullName.invalid}">
+                                                            <label for="gFullName">Full Name</label>
+                                                            <em>*</em>
+                                                            <em
+                                                                *ngIf="gFullName.touched && gFullName.invalid">Required</em>
+                                                            <input name="gFullName" class="form-control" type="text"
+                                                                placeholder="Full Name" formControlName="gFullName"
+                                                                id="gFullName" required />
+                                                        </div>
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': gIDn.touched && gIDn.invalid}">
+                                                            <label for="gIDn">NIN/Passport</label>
+                                                            <em>*</em>
+                                                            <em *ngIf="gIDn.touched && gIDn.invalid">Required</em>
+                                                            <input name="gIDn" class="form-control" type="text"
+                                                                placeholder="NIN/Passport" formControlName="gIDn"
+                                                                id="gIDn" required />
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-12"
+                                                            [ngClass]="{'error': gPhysicalAddress.touched && gPhysicalAddress.invalid}">
+                                                            <label for="gPhysicalAddress">Physical Address</label>
+                                                            <em>*</em>
+                                                            <em
+                                                                *ngIf="gPhysicalAddress.touched && gPhysicalAddress.invalid">Required</em>
+                                                            <input name="gPhysicalAddress" class="form-control"
+                                                                type="text" placeholder="Physical Address"
+                                                                formControlName="gPhysicalAddress" id="gPhysicalAddress"
+                                                                required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-5"
+                                                            [ngClass]="{'error': gPhone.touched && gPhone.invalid}">
+                                                            <label for="gPhone">Phone Number</label>
+                                                            <em>*</em>
+                                                            <em *ngIf="gPhone.touched && gPhone.invalid">Required</em>
+                                                            <!--<em *ngIf="gPhone.errors.invaliddPhone">Enter a valid gPhone number</em>-->
+                                                            <input name="gPhone" class="form-control" type="tel"
+                                                                placeholder="Phone number" formControlName="gPhone"
+                                                                id="gPhone" required />
+                                                        </div>
+                                                        <div class="form-group col-md-7"
+                                                            [ngClass]="{'error': gEmail.touched && gEmail.invalid}">
+                                                            <label for="gEmail">Email Address</label>
+                                                            <em class="required" *ngIf="!gEmail.errors?.pattern">*</em>
+                                                            <em
+                                                                *ngIf="gEmail.touched && gEmail.invalid && !gEmail.errors?.pattern">Required</em>
+                                                            <em
+                                                                *ngIf="gEmail.touched && gEmail.invalid && gEmail.errors?.pattern">Enter
+                                                                Valid
+                                                                Email Address</em>
+                                                            <input name="gEmail" class="form-control" type="gEmail"
+                                                                placeholder="Email" formControlName="gEmail" id="gEmail"
+                                                                required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
-                                        <label for="email">Email Address</label>
-                                        <em class="required" *ngIf="!email.errors?.pattern">*</em>
-                                        <em
-                                            *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
-                                        <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
-                                            Email Address</em>
-                                        <input name="email" class="form-control" type="email"
-                                            placeholder="Enter your email address" formControlName="email" id="email"
-                                            required />
-                                    </div>
-
                                 </section>
 
                             </div>
@@ -433,8 +566,14 @@
                                 [Acknowledge info entered valid]
                             </div>
                         </section>
-                        <span class="btnGrp" (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+                        <div class="btnGrp">
                             <div id="btn-group" class="form-group">
+                                <span class="save-btn-group">
+                                    <button type="button" id="save" class="btn btn-primary">
+                                        <fa-icon [icon]="['fas', 'save']"></fa-icon>
+                                        Save progress
+                                    </button>
+                                </span>
                                 <span class="nav-btn-group">
                                     <button type="button" id="back" class="btn btn-warning">
                                         <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
@@ -444,12 +583,15 @@
                                     </button>
                                 </span>
                                 <span class="submit-btn-group" style="float:right">
-                                    <button type="submit" class="btn btn-primary"
-                                        [disabled]="completeProfileForm.invalid">Submit</button>
-                                    <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                                    <span (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+                                        <button type="submit" class="btn btn-primary"
+                                            [disabled]="completeProfileForm.invalid">Submit</button>
+                                    </span>
+                                    <button (click)="cancel()" class="btn"
+                                        [style.background-color]="'grey'">Cancel</button>
                                 </span>
                             </div>
-                        </span>
+                        </div>
                     </form>
                 </div>
             </div>

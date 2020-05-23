@@ -22,6 +22,7 @@ import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboa
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SideNavService } from './shared/services/side-nav.service';
 import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { SideNavComponent } from './shared/components/side-nav/side-nav.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
