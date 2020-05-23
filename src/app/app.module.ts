@@ -22,6 +22,7 @@ import { NewsComponent } from './news/news.component';
 import { AddfunderComponent } from './components/dashboard/addfunder/addfunder.component';
 import { EditfunderComponent } from './components/dashboard/editfunder/editfunder.component';
 import { AddSMEComponent } from './components/dashboard/add-sme/add-sme.component';
+import { FunderdetailsComponent } from './components/dashboard/funderdetails/funderdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { AddSMEComponent } from './components/dashboard/add-sme/add-sme.componen
     AddfunderComponent,
     EditfunderComponent,
     AddSMEComponent,
+    FunderdetailsComponent,
     
   ],
 

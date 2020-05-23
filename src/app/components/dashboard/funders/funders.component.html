@@ -18,13 +18,18 @@
         </thead>
         
         <tbody>
-            <tr>
-                <td>Bank Of Uganda</td>
-                <td>Banking</td>
-                <td>Government</td>
-                <td>‎+256-414-258-441/6</td>
-                <td>info@bou.or.ug</td>
-                <td>www.bou.or.ug</td>
+            <tr *ngFor="let funder of funders | async">
+                <td>{{funder.organisationName}}</td>
+                <td>{{funder.sectorOfOperation}}</td>
+                <td>{{funder.typeOfOrganisation}}</td>
+                <td>‎{{funder.contactInformation}}</td>
+                <td>{{funder.emailAddress}}</td>
+                <td>{{funder.website}}</td>
+                <td><button (click)="deleteFunder(funder.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="funderdetails(funder.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                    <button class="btn btn-info" routerLink="../Editfunder">Edit Funder
+                    </button> 
+                </td>
             </tr>
         </tbody>
         
@@ -54,16 +59,17 @@
         </thead>
         
         <tbody>
-            <tr>
-                <td>Grant</td>
-                <td>World Bank</td>
-                <td>...........</td>
-                <td>‎Research project</td>
-                <td>Kenya</td>
-                <td>$ 50,000</td>
-                <td>Ongoing</td>
-                <td>.......</td>
-                <td>10th December, 2020</td>
+            <tr *ngFor="let funder of funders | async">
+                <td>{{funder.typeOfFunding}}</td>
+                <td>{{funder.fundingAgencies}}</td>
+                <td>{{funder.termsConditions}}</td>
+                <td>‎{{funder.purposeFunding}}</td>
+                <td>{{funder.geographicalPreference}}</td>
+                <td>{{funder.fundingCeiling}}</td>
+                <td>{{funder.startOngoing}}</td>
+                <td>{{funder.eligibility}}</td>
+                <td>{{funder.deadline}}</td>
+                <td><button (click)="deleteFunder(funder.id)" class="btn btn-danger">Delete</button></td>
             </tr>
         </tbody>
         

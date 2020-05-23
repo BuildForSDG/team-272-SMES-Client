@@ -10,11 +10,10 @@ import { NewsComponent } from './news/news.component';
 import { AddfunderComponent } from './components/dashboard/addfunder/addfunder.component';
 import { EditfunderComponent } from './components/dashboard/editfunder/editfunder.component';
 import { AddSMEComponent} from './components/dashboard/add-sme/add-sme.component';
+import { FunderdetailsComponent } from './components/dashboard/funderdetails/funderdetails.component';
 
 const routes: Routes = [
-  {
-    path: '', component: HomePageComponent
-  },
+  {path: '', component: HomePageComponent },
 
   { path: 'dashboard', component: DashboardComponent,
     children: [
@@ -22,8 +21,9 @@ const routes: Routes = [
       { path: 'Funders', component: FundersComponent},
       { path: 'Smes', component: SmesComponent},
       { path: 'Addfunder', component: AddfunderComponent},
-      { path: 'Editfunder', component: EditfunderComponent},
-      { path: 'AddSME', component: AddSMEComponent}]
+      { path: 'Editfunder/:id', component: EditfunderComponent},
+      { path: 'AddSME', component: AddSMEComponent},
+      { path: 'Funderdetails', component: FunderdetailsComponent }]
     },
   { path: 'sign-in', component: SignInComponent},
   { path: 'news', component: NewsComponent}
@@ -31,8 +31,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+    initialNavigation: 'enabled'})],
+    
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
