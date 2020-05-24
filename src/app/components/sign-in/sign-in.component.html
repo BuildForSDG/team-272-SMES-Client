@@ -5,7 +5,12 @@
 		<div class="user">
 			<h1>SME Connect</h1>
 			<h2>Welcome User</h2>
-		</div>
+    </div>
+    <div *ngIf="errorMessage">
+      <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
 		<form [formGroup]="loginForm" (ngSubmit)="onLogin()" >
 			<div class="form">
 				<label for="email">Email</label>

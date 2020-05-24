@@ -35,6 +35,9 @@ export function reducer(state = initialUserState, action: All): UserState {
         errorMessage: 'Incorrect email and/or password.'
       };
     }
+    case AuthActionTypes.LOGOUT: {
+      return initialUserState;
+    }
     default: {
       return state;
     }

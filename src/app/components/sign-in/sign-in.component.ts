@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import { Store } from '@ngrx/store';
 import { UserState } from '../../store/state/user.state';
+import { selectAuthState } from './../../store/state/user.state';
+
 import { LogIn } from './../../store/actions/auth.actions';
 import { User } from './../user/user.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -15,6 +18,8 @@ import { User } from './../user/user.model';
 export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   login = false;
+  getState: Observable<any>;
+  errorMessage: string | null;
 
 
 
@@ -22,12 +27,17 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private store: Store<UserState>,
     private formBuilder: FormBuilder
-  ) { }
+  ) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
+    });
+    this.getState.subscribe(state => {
+      this.errorMessage = state.errorMessage;
     });
   }
 
