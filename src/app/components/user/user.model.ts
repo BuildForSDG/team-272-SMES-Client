@@ -20,3 +20,21 @@ export interface IUser {
     username: string;
     fullname: string;
 }
+
+export class User {
+  token?: string;
+  fullName?: string;
+  physicalAddress?: string;
+  country?: string;
+  phone?: string;
+  email?: string;
+  businessName?: string;
+  businessNumber?: string;
+  dateOfReg?: Date;
+  regAddress?: string;
+  businessEmail?: string;
+  businessTel?: string;
+  website?: string;
+  businessNature?: string;
+  newPassword?: string;
+}
