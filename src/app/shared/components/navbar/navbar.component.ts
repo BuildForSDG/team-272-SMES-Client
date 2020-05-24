@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Logout } from './../../../store/actions/auth.actions';
 import { selectAuthState, UserState } from './../../../store/state/user.state';
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
   user = null;
   errorMessage = null;
 
-  constructor(private store: Store<UserState>) {
+  constructor(private store: Store<UserState>, public router: Router) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -31,6 +32,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.store.dispatch(new Logout());
+    this.router.navigateByUrl('/');
   }
 
 }

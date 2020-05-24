@@ -8,7 +8,7 @@ import { SmesComponent } from './components/smes/smes.component';
 import { UserModule } from './components/user/user.module';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
-
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -17,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'smes-dashboard',
-    component: SmesDashboardComponent
+    component: SmesDashboardComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'user', loadChildren: () => UserModule },
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
       { path: 'Smes', component: SmesComponent},
     ]
     },
-    { path: 'sign-in', component: SignInComponent}
+    { path: 'sign-in', component: SignInComponent},
+    { path: '**', redirectTo: '/' }
   ];
 
 

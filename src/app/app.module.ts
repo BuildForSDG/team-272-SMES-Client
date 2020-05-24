@@ -1,3 +1,4 @@
+import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { SideNavService } from './shared/services/side-nav.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,7 +24,7 @@ import { AuthService } from './services/auth.service';
 import { authReducers } from './store/state/user.state';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/side-nav-toggler.component';
@@ -64,7 +65,19 @@ import { SideNavComponent } from './shared/components/side-nav/side-nav.componen
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
 
-  providers: [AuthService, SideNavService],
+  providers: [
+    AuthService, SideNavService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

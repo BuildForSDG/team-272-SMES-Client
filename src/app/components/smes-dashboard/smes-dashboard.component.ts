@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { selectAuthState } from './../../store/state/user.state';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,7 @@ export class SmesDashboardComponent implements OnInit {
   user = null;
   errorMessage = null;
 
-  constructor(private store: Store<UserState>) {
+  constructor(private store: Store<UserState>, public router: Router) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -31,6 +32,7 @@ export class SmesDashboardComponent implements OnInit {
 
   logout(): void {
     this.store.dispatch(new Logout());
+    this.router.navigateByUrl('/');
   }
 
 }
