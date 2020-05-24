@@ -1,2 +1,2 @@
 export * from './sign-up.component';
-export * from './sign-up.service';
+export * from '../../../shared/services/sign-up.service';
