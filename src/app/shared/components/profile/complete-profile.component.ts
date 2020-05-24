@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpService } from 'src/app/components/user';
-import { ISignUp } from 'src/app/components/user/user.model';
+import { ISignUp, ICompleteSMEProfile } from 'src/app/components/user/user.model';
 
 @Component({
     selector: 'complete-profile',
@@ -11,13 +11,17 @@ import { ISignUp } from 'src/app/components/user/user.model';
 })
 
 export class CompleteProfileComponent implements OnInit {
-
+    mouseOver: boolean;
+    defaultedFlag: boolean;
+    lawsuiteFlag: boolean;
     completeProfileForm: FormGroup;
     banks: FormArray;
     directors: FormArray;
     shareholders: FormArray;
     guarantors: FormArray;
     lenders: FormArray;
+    lender: FormGroup;
+    name: FormControl;
     dFullName: FormControl;
     dIDn: FormControl;
     dEmail: FormControl;
@@ -34,7 +38,6 @@ export class CompleteProfileComponent implements OnInit {
     gEmail: FormControl;
     gPhone: FormControl;
     gPhysicalAddress: FormControl;
-    mouseOver: boolean;
     dateOfOps: FormControl;
     employees: FormControl;
     description: FormControl;
@@ -42,7 +45,6 @@ export class CompleteProfileComponent implements OnInit {
     loanAmount: FormControl;
     total: FormControl;
     contribution: FormControl;
-    lender: FormControl;
     balance: FormControl;
     rate: FormControl;
     payment: FormControl;
@@ -51,6 +53,7 @@ export class CompleteProfileComponent implements OnInit {
     reason: FormControl;
     lawsuites: FormControl;
     case: FormControl;
+    acknowledgement: FormControl;
 
     constructor(private signUp: SignUpService, private router: Router) { }
 
@@ -67,26 +70,9 @@ export class CompleteProfileComponent implements OnInit {
         this.guarantors = new FormArray([]);
         this.lenders = new FormArray([]);
         this.jobs = new FormControl('', [Validators.required]);
-        this.lender = new FormControl('', [Validators.required]);
-        this.balance = new FormControl('', [Validators.required]);
-        this.rate = new FormControl('', [Validators.required]);
-        this.payment = new FormControl('', [Validators.required]);
-        this.security = new FormControl('', [Validators.required]);
-        this.defaulted = new FormControl('', [Validators.required]);
-        this.reason = new FormControl('', [Validators.required]);
-        this.lawsuites = new FormControl('', [Validators.required]);
-        this.case = new FormControl('', [Validators.required]);
+        this.acknowledgement = new FormControl('', Validators.required);
 
         this.completeProfileForm = new FormGroup({
-            lender: this.lender,
-            balance: this.balance,
-            rate: this.rate,
-            payment: this.payment,
-            security: this.security,
-            defaulted: this.defaulted,
-            reason: this.reason,
-            lawsuites: this.lawsuites,
-            case: this.case,
             directors: this.directors,
             guarantors: this.guarantors,
             lenders: this.lenders,
@@ -99,6 +85,7 @@ export class CompleteProfileComponent implements OnInit {
             contribution: this.contribution,
             description: this.description,
             jobs: this.jobs,
+            acknowledgement: this.acknowledgement
         });
     }
 
@@ -192,29 +179,69 @@ export class CompleteProfileComponent implements OnInit {
         this.shareholders.clear();
     }
 
-    saveUserInfo(data: ISignUp) {
+    addLenders() {
+        this.name = new FormControl('');
+        this.balance = new FormControl('', [Validators.required]);
+        this.rate = new FormControl('', [Validators.required]);
+        this.payment = new FormControl('', [Validators.required]);
+        this.security = new FormControl('', [Validators.required]);
+        this.defaulted = new FormControl('', [Validators.required]);
+        this.reason = new FormControl('', [Validators.required]);
+        this.lawsuites = new FormControl('', [Validators.required]);
+        this.case = new FormControl('', [Validators.required]);
+
+        const lender = new FormGroup({
+            name: this.name,
+            balance: this.balance,
+            rate: this.rate,
+            payment: this.payment,
+            security: this.security,
+            lawsuites: this.lawsuites,
+            defaulted: this.defaulted,
+            reason: this.reason,
+            case: this.case
+        }, Validators.required);
+
+        this.lenders.push(lender);
+    }
+
+    removeLender(index) {
+        this.lenders.removeAt(index);
+    }
+
+    clearLenders() {
+        this.lenders.clear();
+    }
+
+    setDefaulted(state) {
+        this.defaultedFlag = state;
+    }
+
+    setLawsuite(state) {
+        this.lawsuiteFlag = state;
+    }
+
+    saveUserInfo(data: ICompleteSMEProfile) {
         console.log('data', this.completeProfileForm.value);
         if (this.completeProfileForm.valid) {
-            const completeProfileForm: ISignUp = {
-                fullName: data.fullName,
-                businessEmail: data.businessEmail,
-                businessName: data.businessName,
-                businessNature: data.businessNature,
-                businessNumber: data.businessNumber,
-                businessTel: data.businessTel,
-                country: data.country,
-                dateOfReg: data.dateOfReg,
-                email: data.email,
-                phone: data.phone,
-                physicalAddress: data.physicalAddress,
-                regAddress: data.regAddress,
-                website: data.website,
-                newPassword: data.newPassword,
-                confirmPassword: data.confirmPassword
+            const completeProfileForm: ICompleteSMEProfile = {
+                acknowledgement: data.acknowledgement,
+                banks: data.banks,
+                contribution: data.contribution,
+                dateOfOps: data.dateOfOps,
+                description: data.description,
+                directors: data.directors,
+                employees: data.employees,
+                guarantors: data.guarantors,
+                jobs: data.jobs,
+                lenders: data.lenders,
+                loanAmount: data.loanAmount,
+                shareholders: data.shareholders,
+                total: data.total
             };
 
             console.log(`form data captured: ${completeProfileForm}`);
-            if (this.signUp.saveUserInfo(completeProfileForm)) {
+            if (this.signUp.completeProfile(completeProfileForm)) {
                 this.router.navigate(['user/profile']);
             }
         }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IUser, ISignUp } from '../../components/user/user.model';
+import { IUser, ISignUp, ICompleteSMEProfile } from '../../components/user/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -14,15 +14,20 @@ export class SignUpService {
   constructor(private http: HttpClient) { }
 
   saveUserInfo(data: ISignUp) {
-    console.log(`Data ${data}`);
     const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.post(this._SME_URL, data, options)
-      .pipe(tap(res => {
-        this.currentUser.username = res['username'];
-        this.currentUser.email = res['email'];
-      }))
-      .pipe(catchError(this.handleErrors<IUser>('saveUserInfo')));
+    return true;
+    // return this.http.post(this._SME_URL, data, options)
+    //   .pipe(tap(res => {
+    //     this.currentUser.username = res['username'];
+    //     this.currentUser.email = res['email'];
+    //   }))
+    //   .pipe(catchError(this.handleErrors<IUser>('saveUserInfo')));
 
+  }
+
+  completeProfile(data: ICompleteSMEProfile){
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return true;
   }
 
   private handleErrors<T>(operation = 'operation', result?: T) {
