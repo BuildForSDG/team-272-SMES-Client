@@ -31,7 +31,7 @@ import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/si
 import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
