@@ -14,4 +14,13 @@
 // ***********************************************************
 
 // When a command from ./commands is ready to use, import with `import * as commands from './commands'` syntax
-// import * as commands from './commands';
+
+// import './commands';
+
+// tslint:disable-next-line: no-namespace
+declare namespace Cypress {
+  interface Chainable {
+    login(email: any, password: any): void;
+  }
+}
+
