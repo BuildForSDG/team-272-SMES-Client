@@ -1,0 +1,56 @@
+<div class="main">
+<div id="left">
+	<div class="spacer"></div>
+	<div class="signin">
+		<div class="user">
+			<h1>SME Connect</h1>
+			<h2>Welcome User</h2>
+    </div>
+    <div *ngIf="errorMessage">
+      <div class="alert alert-danger" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
+		<form [formGroup]="loginForm" (ngSubmit)="onLogin()" >
+			<div class="form">
+				<label for="email">Email</label>
+        <input type="text" id="email" name="email" class="control" formControlName="email">
+        <div *ngIf="login && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+			</div>
+			<div class="form">
+				<label for="Password">Password</label>
+        <input type="password" name="password" id="Password" class="control" formControlName="password">
+        <div *ngIf="login && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+			</div>
+			<button type="submit" id="login">Sign in</button>
+		</form>
+		<div>
+			<a href="#">Forgot password?</a>
+		</div>
+		<div>
+			<hr />
+		</div>
+		<a href="#">
+			<span class="card card-small">Create an account</span>
+		</a>
+	</div>
+	<footer id="footer">
+		Copyright &copy; 2020 SME Connect LLC. All rights reserved.
+		<div>
+			<a href="#">Terms of Use</a> |
+			<a href="#">Privacy Policy</a>
+	</div>
+</footer>
+
+</div>
+<div id="right">
+	<div class="banner"><h1>Inspiring change for the <strong>better.</strong></h1>
+		<h2>Your number one business partner. </h2></div>
+
+</div>
+</div>

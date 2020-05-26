@@ -1,4 +1,15 @@
 <nav class="navbar navbar-dark bg-dark">
   <app-side-nav-toggler></app-side-nav-toggler>
-    <h3>U Business</h3>
+  <h3> <a routerLink="/">U Business</a></h3>
+  <ng-container *ngIf="isAuthenticated; then thenTemplate; else elseTemplate"></ng-container>
+  <ng-template #thenTemplate>
+    <h4>{{user.email}}</h4>
+    <h4 (click)="logout()">Logout</h4>
+  </ng-template>
+  <ng-template #elseTemplate>
+    <a [routerLink]="['/sign-in']">Log in</a>
+    <a [routerLink]="['/sign-up']">Sign up</a>
+  </ng-template>
+
 </nav>
+

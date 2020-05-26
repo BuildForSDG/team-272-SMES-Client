@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ISignUp } from '../user.model';
-import { SignUpService } from './sign-up.service';
+import { SignUpService } from '../../../shared/services/sign-up.service';
 import { Router } from '@angular/router';
 import { passwordMatchValidator } from 'src/app/shared/custom-validator';
 
