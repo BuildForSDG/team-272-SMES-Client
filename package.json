@@ -66,6 +66,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "cypress": "4.6.0",
+    "cypress-jest": "^0.1.10",
     "jest": "^26.0.1",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
