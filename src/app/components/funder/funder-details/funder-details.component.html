@@ -1,59 +1,82 @@
-<div style="margin-top: 50px;">
-  <h4>About Funder</h4>
+<div>
+  <h1>Profile</h1>
+  <hr>
 </div>
-<hr>
-<div class="row">
-  <div class="col">
-    <span>Organization Name</span>
-  </div>
-  <div class="col">
-    <span></span>
-  </div>
+<input type="hidden" #selection>
+<div style="margin-top: 30px;" class="card-container row">
+    <div class="card card-small col" (click)="selection.value = 'about'" tabindex="0">
+        <span>About Funder</span>
+    </div>
+
+    <div class="card card-small col" (click)="selection.value = 'details'" tabindex="0">
+        <span>Funding Details</span>
+    </div>
+
+    <div class="card card-small col" (click)="selection.value = 'password'" tabindex="0">
+        <span>Password</span>
+    </div>
 </div>
-<div class="row">
-  <div class="col">
-    <span>Sector of operation</span>
+
+<div class="terminal row" [ngSwitch]="selection.value">
+
+  <!-- ABOUT -->
+  <div style="margin-top: 10px;" *ngSwitchDefault class="col">
+    <h4>About Funder</h4>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <span>Organization Name</span>
+      </div>
+      <div class="col">
+        <span>Monza Corp</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Sector of operation</span>
+      </div>
+      <div class="col">
+        <span>Agriculture</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Type of Organization</span>
+      </div>
+      <div class="col">
+        <span>Bank</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Contact numbers</span>
+      </div>
+      <div class="col">
+        <span>0786574833</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Email</span>
+      </div>
+      <div class="col">
+        <span>denizmoini09@gmail.com</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Website</span>
+      </div>
+      <div class="col">
+        <span>www.amdopebuthigh.co.uk</span>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <span></span>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <span>Type of Organization</span>
-  </div>
-  <div class="col">
-    <span></span>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <span>Contact numbers</span>
-  </div>
-  <div class="col">
-    <span></span>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <span>Email</span>
-  </div>
-  <div class="col">
-    <span></span>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <span>Website</span>
-  </div>
-  <div class="col">
-    <span></span>
-  </div>
-</div>
-<div style="margin-top: 50px;">
+
+  <!-- DEATAILS -->
+<div style="margin-top: 10px;" *ngSwitchCase="'details'" class="col">
   <h4>Funding Details</h4>
-</div>
-<hr>
+  <hr>
 <div class="row">
   <div class="col">
     <span>Type of financing</span>
@@ -126,22 +149,24 @@
     <span></span>
   </div>
 </div>
-<div style="margin-top: 50px;">
-  <h4>Password</h4>
 </div>
-<hr>
-<form style="margin-bottom: 50px;">
+
+<!-- PASSWORD -->
+<div style="margin-top: 10px;" *ngSwitchCase="'password'" class="col">
+  <h4>Password</h4>
+  <hr>
+<form style="margin-bottom: 50px;" class="form">
   <div class="row">
     <label class="col-6">Current Password</label>
-    <input type="" name="" class="col-3">
+    <input type="" name="" class="col-3 form-control">
   </div>
   <div class="row">
     <label class="col-6">New Password</label>
-    <input type="" name="" class="col-3">
+    <input type="" name="" class="col-3 form-control">
   </div>
   <div class="row">
     <label class="col-6">Confirm Password</label>
-    <input type="" name="" class="col-3">
+    <input type="" name="" class="col-3 form-control">
   </div>
   <div class="row">
     <div class="col-6"></div>
@@ -149,3 +174,13 @@
     <div class="col-3"></div>
   </div>
 </form>
+</div>
+</div>
+ <!-- 
+
+
+
+
+
+
+-->
