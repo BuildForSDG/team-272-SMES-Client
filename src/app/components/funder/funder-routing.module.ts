@@ -7,7 +7,8 @@ import { FunderDetailsComponent } from './funder-details/funder-details.componen
 
 const funderRoutes: Routes = [
 { path: '', component: FunderComponent,
-children: [{ path: 'profile', component: FunderDetailsComponent}]
+children: [{ path: 'profile', component: FunderDetailsComponent},
+{ path: '', redirectTo: '/funder/profile', pathMatch: 'full'}]
 }
 ]
 
