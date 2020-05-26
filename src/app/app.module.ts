@@ -1,3 +1,5 @@
+import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
+import { SideNavService } from './shared/services/side-nav.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,12 +18,20 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { StoreModule } from '@ngrx/store';
+import { AuthService } from './services/auth.service';
+import { authReducers } from './store/state/user.state';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/effects/auth.effects';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 import { SideNavTogglerComponent } from './shared/components/side-nav-toggler/side-nav-toggler.component';
 import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { SideNavService } from './shared/services/side-nav.service';
 import { SideNavComponent } from './shared/components/side-nav/side-nav.component';
+
 
 
 @NgModule({
@@ -45,13 +55,30 @@ import { SideNavComponent } from './shared/components/side-nav/side-nav.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+    StoreModule.forRoot(authReducers, {}),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
 
-  providers: [SideNavService],
+  providers: [
+    AuthService, SideNavService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 
