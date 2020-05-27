@@ -21,6 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'user', loadChildren: () => UserModule },
+  { path: 'funder', loadChildren: () => import('./components/funder/funder.module').then(mod => mod.FunderModule)},
   {
     path: 'dashboard', component: DashboardComponent,
     children: [

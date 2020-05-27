@@ -40,7 +40,6 @@ import { SideNavComponent } from './shared/components/side-nav/side-nav.componen
     HomePageComponent,
     DashboardComponent,
     OverviewComponent,
-    FundersComponent,
     SmesComponent,
     FooterComponent,
     SignInComponent,
