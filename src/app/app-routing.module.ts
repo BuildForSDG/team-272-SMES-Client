@@ -1,14 +1,14 @@
+import { HomePageComponent } from './components/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { FundersComponent } from './components/funders/funders.component';
 import { SmesComponent } from './components/smes/smes.component';
 import { UserModule } from './components/user/user.module';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SmesDashboardComponent } from './components/smes-dashboard/smes-dashboard.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import {SmesDashboardModule} from './components/smes-dashboard/smes-dashboard.module';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'smes-dashboard',
-    component: SmesDashboardComponent,
+    loadChildren: () => SmesDashboardModule,
     canActivate: [AuthGuard]
   },
   { path: 'user', loadChildren: () => UserModule },
