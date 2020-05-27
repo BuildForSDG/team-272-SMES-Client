@@ -5,14 +5,7 @@ export interface ISignUp {
     phone: string;
     email: string;
     businessName: string;
-    businessNumber: string;
-    dateOfReg: Date;
-    regAddress: string;
-    businessEmail: string;
-    businessTel: string;
-    website: string;
-    businessNature: string;
-    newPassword?: string;
+    password: string;
     confirmPassword?: string;
 }
 
