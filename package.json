@@ -53,6 +53,11 @@
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/cypress/"
+    ]
+  },
   "devDependencies": {
     "@angular-builders/jest": "^9.0.1",
     "@angular-devkit/build-angular": "~0.901.4",
