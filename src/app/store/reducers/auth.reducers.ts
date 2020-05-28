@@ -16,7 +16,7 @@ export const initialUserState: UserState = {
   errorMessage: null
 };
 
-export function reducer(state = initialUserState, action: All): UserState {
+export function reducer(state = initialUserState, action: any): UserState {
   switch (action.type) {
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
@@ -24,7 +24,7 @@ export function reducer(state = initialUserState, action: All): UserState {
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: action.payload.email
+          email: 'test@gmail.com'
         },
         errorMessage: null
       };
