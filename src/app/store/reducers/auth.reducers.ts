@@ -24,7 +24,7 @@ export function reducer(state = initialUserState, action: any): UserState {
         isAuthenticated: true,
         user: {
           token: action.payload.token,
-          email: 'test@gmail.com'
+          email: action.payload.email
         },
         errorMessage: null
       };
