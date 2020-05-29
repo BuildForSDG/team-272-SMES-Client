@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SignInComponent } from './sign-in.component';
+import { authReducers } from './../../store/state/user.state';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -8,18 +11,21 @@ describe('SignInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignInComponent ]
-    })
-    .compileComponents();
+      declarations: [SignInComponent],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        StoreModule.forRoot(authReducers)
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SignInComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = fixture.debugElement.componentInstance;
   });
 
-  it('should create', () => {
+  it('should create SignInComponent', () => {
     expect(component).toBeTruthy();
   });
 });

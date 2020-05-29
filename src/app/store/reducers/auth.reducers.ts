@@ -16,7 +16,7 @@ export const initialUserState: UserState = {
   errorMessage: null
 };
 
-export function reducer(state = initialUserState, action: All): UserState {
+export function reducer(state = initialUserState, action: any): UserState {
   switch (action.type) {
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
