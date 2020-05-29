@@ -26,25 +26,9 @@ describe('SignInComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SignInComponent);
     component = fixture.debugElement.componentInstance;
-    // store = TestBed.inject(Store);
   });
 
   it('should create SignInComponent', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('should dispatch the onlogin functions', () => {
-  //   const user = {
-  //     email: 'test@test.com',
-  //     password: '123456'
-  //   };
-  //   const store = TestBed.inject(Store);
-  //   const action = new fromActions.LogIn(user);
-  //   const spy = jest.spyOn(store, 'dispatch');
-
-  //   fixture.detectChanges();
-
-  //   component.onLogin();
-  //   expect(spy).toHaveBeenCalledWith(action);
-  // });
 });
