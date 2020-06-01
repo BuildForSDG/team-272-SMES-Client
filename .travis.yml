@@ -1,20 +1,12 @@
-sudo: false
 language: node_js
 node_js:
-- '8'
-- '9'
-- '10'
-branches:
-  only:
-  - develop
-cache:
-  directories:
-  - node_modules
-before_install:
-- npm update
-install:
-- npm install
-script:
-- npm test
-- npm run e2e
-- npm run coveralls
+
+-   "8.9"
+    cache:
+    directories: - ~/.npm - node_modules
+    install:
+-   npm install
+    script:
+-   npm run cypress:ci
+-   npm test
+-   npm run coveralls
