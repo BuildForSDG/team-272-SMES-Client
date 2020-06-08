@@ -38,6 +38,13 @@ export class CompleteProfileComponent implements OnInit {
     gEmail: FormControl;
     gPhone: FormControl;
     gPhysicalAddress: FormControl;
+    businessNumber: FormControl;
+    dateOfReg: FormControl;
+    regAddress: FormControl;
+    businessEmail: FormControl;
+    businessTel: FormControl;
+    website: FormControl;
+    businessNature: FormControl;
     dateOfOps: FormControl;
     employees: FormControl;
     description: FormControl;
@@ -58,6 +65,14 @@ export class CompleteProfileComponent implements OnInit {
     constructor(private signUp: SignUpService, private router: Router) { }
 
     ngOnInit() {
+
+        this.businessNature = new FormControl('', [Validators.required]);
+        this.businessNumber = new FormControl('', [Validators.required]);
+        this.dateOfReg = new FormControl('', [Validators.required]);
+        this.regAddress = new FormControl('', [Validators.required]);
+        this.businessEmail = new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
+        this.businessTel = new FormControl('', [Validators.required]);
+        this.website = new FormControl('', [Validators.required]);
         this.dateOfOps = new FormControl('', [Validators.required]);
         this.employees = new FormControl('', [Validators.required]);
         this.loanAmount = new FormControl('', [Validators.required]);
