@@ -65,6 +65,7 @@ export class CompleteProfileComponent implements OnInit {
     constructor(private signUp: SignUpService, private router: Router) { }
 
     ngOnInit() {
+
         this.businessNature = new FormControl('', [Validators.required]);
         this.businessNumber = new FormControl('', [Validators.required]);
         this.dateOfReg = new FormControl('', [Validators.required]);

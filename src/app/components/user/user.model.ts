@@ -1,12 +1,13 @@
 export interface ISignUp {
     fullName: string;
-    physicalAddress: string;
-    country: string;
+    physicalAddress?: string;
+    country?: string;
     phone: string;
     email: string;
     businessName: string;
     password: string;
     confirmPassword?: string;
+    username: string
 }
 
 export interface IUser {

@@ -15,13 +15,12 @@ export class SignUpService {
 
   saveUserInfo(data: ISignUp) {
     const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return true;
-    // return this.http.post(this._SME_URL, data, options)
-    //   .pipe(tap(res => {
-    //     this.currentUser.username = res['username'];
-    //     this.currentUser.email = res['email'];
-    //   }))
-    //   .pipe(catchError(this.handleErrors<IUser>('saveUserInfo')));
+    return this.http.post(this._SME_URL, data, options)
+      .pipe(tap(res => {
+        this.currentUser.username = res['username'];
+        this.currentUser.email = res['email'];
+      }))
+      .pipe(catchError(this.handleErrors<IUser>('saveUserInfo')));
 
   }
 

@@ -15,11 +15,11 @@ export class SignUpComponent implements OnInit {
     signUpForm: FormGroup;
     mouseOver: boolean;
     fullName: FormControl;
-    physicalAddress: FormControl;
-    country: FormControl;
+    userName: FormControl;
     phone: FormControl;
     email: FormControl;
     businessName: FormControl;
+    username: FormControl;
     newPassword: FormControl;
     confirmPassword: FormControl;
 
@@ -27,20 +27,19 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit() {
         this.fullName = new FormControl('', [Validators.required]);
-        this.physicalAddress = new FormControl('', [Validators.required]);
-        this.country = new FormControl('', [Validators.required]);
-        this.phone = new FormControl('', [Validators.required]);
+        this.userName = new FormControl('', Validators.required);
+        this.phone = new FormControl('', Validators.required);
         this.email = new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]);
         this.businessName = new FormControl('', [Validators.required]);
+        this.userName = new FormControl('', Validators.required);
         this.newPassword = new FormControl('', [Validators.required]);
         this.confirmPassword = new FormControl('', [Validators.required]);
 
         this.signUpForm = new FormGroup({
             fullName: this.fullName,
-            physicalAddress: this.physicalAddress,
-            country: this.country,
-            phone: this.phone,
+            userName: this.userName,
             email: this.email,
+            phone: this.phone,
             businessName: this.businessName,
             newPassword: this.newPassword,
             confirmPassword: this.confirmPassword
@@ -53,11 +52,10 @@ export class SignUpComponent implements OnInit {
             const signUpData: ISignUp = {
                 fullName: data.fullName,
                 businessName: data.businessName,
-                country: data.country,
                 email: data.email,
                 phone: data.phone,
-                physicalAddress: data.physicalAddress,
-                password: data.confirmPassword
+                password: data.confirmPassword,
+                username: data.username
             };
 
             if (this.signUp.saveUserInfo(signUpData)) {
