@@ -15,7 +15,7 @@ export class CrudService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  addFunder(funder: Object): Observable<Object> {
+  createFunder(funder: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, funder);
   }
 
