@@ -1,263 +1,107 @@
 <main>
     <div class="container">
         <div class="row">
-            <div view-toggle class="form-container">
-                <div class="col-md-4">
-                    <h1>U Connect</h1>
-                    <div class="reg-nav">
-                        <div class="card">
-                            <a [routerLink]="['/user/sign-up']" class="stretched-link view-links"
-                                routerLinkActive="active">
-                                <h2>
-                                    <span class="step-text">About Business Owner</span>
-                                    <span>
-                                        <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
-                                    </span>
-                                </h2>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a [routerLink]="['/user/sign-up']" class="stretched-link view-links"
-                                routerLinkActive="active">
-                                <h2>
-                                    <span class="step-text">About Business</span>
-                                    <span>
-                                        <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
-                                    </span>
-
-                                </h2>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a [routerLink]="['/user/sign-up']" class="stretched-link view-links"
-                                routerLinkActive="active">
-                                <h2>
-                                    <span class="step-text">Credentials</span>
-                                    <span>
-                                        <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
-                                    </span>
-
-                                </h2>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-container">
                 <div class="col-md-6">
-                    <h2>Create Your Account</h2>
+                    <h2 id="sign-up-heading">Create Your Account</h2>
                     <hr>
-                    <form [formGroup]="signUpForm" (ngSubmit)="saveUserInfo(signUpForm.value)" autocomplete="off"
-                        novalidate>
+                    <form [formGroup]="signUpForm" (ngSubmit)="saveUserInfo(signUpForm.value)" autocomplete="off" novalidate>
                         <!-- SECTION 1 -->
 
-                        <section class="view" id="owner-view">
+                        <section class="view" id="view1">
                             <div class="inner">
                                 <div class="wizard-header">
-                                    <h3 class="heading">Personal Information</h3>
-                                    <p>Please enter your infomation and proceed to the next step so we can build your
-                                        account</p>
+                                    <h3 class="heading">General Information</h3>
+                                    <p>Please enter your infomation and proceed to the next step so we can build your account
+                                    </p>
                                 </div>
-                                <div class="form-group" [ngClass]="{'error': fullName.touched && fullName.invalid}">
-                                    <label for="fullName">Full Name</label>
-                                    <em>*</em>
-                                    <em *ngIf="fullName.touched && fullName.invalid">Required</em>
-                                    <input name="fullName" class="form-control" type="text"
-                                        placeholder="Enter your Full Name here" formControlName="fullName" id="fullName"
-                                        required />
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-7"
-                                        [ngClass]="{'error': physicalAddress.touched && physicalAddress.invalid}">
-                                        <label for="physicalAddress">Physical Address</label>
-                                        <em>*</em>
-                                        <em *ngIf="physicalAddress.touched && physicalAddress.invalid">Required</em>
-                                        <input name="physicalAddress" class="form-control" type="text"
-                                            placeholder="Enter your Physical Address" formControlName="physicalAddress"
-                                            id="physicalAddress" required />
-                                    </div>
-                                    <div class="form-group col-md-5"
-                                        [ngClass]="{'error': country.touched && country.invalid}">
-                                        <label for="country">Country</label>
-                                        <em>*</em>
-                                        <em *ngIf="country.touched && country.invalid">Required</em>
-                                        <select class="form-control" name="country" formControlName="country"
-                                            id="country" required>
-                                            <option value="">Select Country...</option>
-                                            <option value="Uganda">Uganda</option>
-                                        </select>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12" [ngClass]="{'error': fullName.touched && fullName.invalid}">
+                                                <label for="fullName">Full Name</label>
+                                                <em>*</em>
+                                                <em *ngIf="fullName.touched && fullName.invalid">Required</em>
+                                                <input name="fullName" class="form-control" type="text" placeholder="Full Name" formControlName="fullName" id="fullName" required />
+                                            </div>
+                                            <div class="form-group col-md-12" [ngClass]="{'error': userName.touched && userName.invalid}">
+                                                <label for="userName">Username</label>
+                                                <em>*</em>
+                                                <em *ngIf="userName.touched && userName.invalid">Required</em>
+                                                <input name="userName" class="form-control" type="text" placeholder="Username" formControlName="userName" id="username" required />
+                                            </div>
+                                            <div class="form-group col-md-12" [ngClass]="{'error': businessName.touched && businessName.invalid}">
+                                                <label class="col-form-label" for="businessName">Business name</label>
+                                                <em>*</em>
+                                                <em *ngIf="businessName.touched && businessName.invalid">Required</em>
+                                                <input class="form-control" name="businessName" type="text" placeholder="Business name" formControlName="businessName" id="businessName" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-7" [ngClass]="{'error': email.touched && email.invalid}">
+                                                <label for="email">Email Address</label>
+                                                <em class="required" *ngIf="!email.errors?.pattern">*</em>
+                                                <em *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
+                                                <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter
+                          Valid
+                          Email Address</em>
+                                                <input name="email" class="form-control" type="email" placeholder="Enter your email address" formControlName="email" id="email" required />
+                                            </div>
+                                            <div class="form-group col-md-5" [ngClass]="{'error': phone.touched && phone.invalid}">
+                                                <label for="phone">Phone Number</label>
+                                                <em>*</em>
+                                                <em *ngIf="phone.touched && phone.invalid">Required</em>
+                                                <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
+                                                <input name="phone" class="form-control" type="tel" placeholder="Phone Number" formControlName="phone" id="phone" required />
+                                            </div>
+
+                                        </div>
+
 
                                     </div>
-                                    <div class="form-group col-md-6"
-                                        [ngClass]="{'error': phone.touched && phone.invalid}">
-                                        <label for="phone">Phone Number</label>
-                                        <em>*</em>
-                                        <em *ngIf="phone.touched && phone.invalid">Required</em>
-                                        <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
-                                        <input name="phone" class="form-control" type="tel"
-                                            placeholder="Enter your phone number" formControlName="phone" id="phone"
-                                            required />
-                                    </div>
-                                </div>
-
-                                <div class="form-group" [ngClass]="{'error': email.touched && email.invalid}">
-                                    <label for="email">Email Address</label>
-                                    <em class="required" *ngIf="!email.errors?.pattern">*</em>
-                                    <em *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
-                                    <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter Valid
-                                        Email Address</em>
-                                    <input name="email" class="form-control" type="email"
-                                        placeholder="Enter your email address" formControlName="email" id="email"
-                                        required />
                                 </div>
                             </div>
                         </section>
                         <!-- SECTION 2 -->
-                        <section class="view" id="business-view">
-                            <div class="inner">
-                                <div class="wizard-header">
-                                    <h3 class="heading">Business Information</h3>
-                                    <p>Please enter your infomation and proceed to the next step so we can build your
-                                        account.</p>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12"
-                                        [ngClass]="{'error': businessName.touched && businessName.invalid}">
-                                        <label class="col-form-label" for="businessName">Business trading name</label>
-                                        <em>*</em>
-                                        <em *ngIf="businessName.touched && businessName.invalid">Required</em>
-                                        <input class="form-control" name="businessName" type="text" placeholder="Corp"
-                                            formControlName="businessName" id="businessName" required />
-                                    </div>
-                                    <div class="form-group col-md-12"
-                                        [ngClass]="{'error': businessNature.touched && businessNature.invalid}">
-                                        <label class="col-form-label" for="businessNature">Nature of Business</label>
-                                        <em>*</em>
-                                        <em *ngIf="businessNature.touched && businessNature.invalid">Required</em>
-                                        <!--<em *ngIf="businessNature?.errors.maxLength">Description must be only 400 characters</em>-->
-                                        <select class="form-control" name="businessNature" type="text"
-                                            formControlName="businessNature" id="businessNature" required>
-                                            <option value="">Nature of Business</option>
-                                            <option value="Agriculture">Agriculture</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-5"
-                                        [ngClass]="{'error': businessNumber.touched && businessNumber.invalid}">
-                                        <label class="col-form-label" for="businessNumber">Business Number</label>
-                                        <em>*</em>
-                                        <em *ngIf="businessNumber.touched && businessNumber.invalid">Required</em>
-                                        <input class="form-control" name="businessNumber" type="text"
-                                            placeholder="Business Number" formControlName="businessNumber"
-                                            id="businessNumber" required />
-                                    </div>
-                                    <div class="form-group"
-                                        [ngClass]="{'error': dateOfReg.touched && dateOfReg.invalid}">
-                                        <label class="col-form-label" for="dateOfReg">Date of Registration</label>
-                                        <em>*</em>
-                                        <em *ngIf="dateOfReg.touched && dateOfReg.invalid">Required</em>
-                                        <input class="form-control" name="dateOfReg" type="date"
-                                            formControlName="dateOfReg" id="dateOfReg" required />
-                                    </div>
-                                    <div class="form-group col-md-12"
-                                        [ngClass]="{'error': regAddress.touched && regAddress.invalid}">
-                                        <label class="col-form-label" for="regAddress">Registered Address</label>
-                                        <em>*</em>
-                                        <em *ngIf="regAddress.touched && regAddress.invalid">Required</em>
-                                        <input class="form-control" name="regAddress" type="text"
-                                            placeholder="City/Street" formControlName="regAddress" id="regAddress"
-                                            required />
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group  col-md-12"
-                                        [ngClass]="{'error': businessTel.touched && businessTel.invalid}">
-                                        <label class="col-form-label" for="businessTel">Business Telephone
-                                            Number</label>
-                                        <em>*</em>
-                                        <em *ngIf="businessTel.touched && businessTel.invalid">Required</em>
-                                        <input class="form-control" name="businessTel" type="tel"
-                                            placeholder="Enter Business Telephone" formControlName="businessTel"
-                                            id="businessTel" required />
-                                    </div>
-                                    <div class="form-group  col-md-12"
-                                        [ngClass]="{'error': businessEmail.touched && businessEmail.invalid}">
-                                        <label class="col-form-label" for="businessEmail">Business Email Address</label>
-                                        <em class="required" *ngIf="!businessEmail.errors?.pattern">*</em>
-                                        <em
-                                            *ngIf="businessEmail.touched && businessEmail.invalid && !businessEmail.errors?.pattern">Required</em>
-                                        <em
-                                            *ngIf="businessEmail.touched && businessEmail.invalid && businessEmail.errors?.pattern">Enter
-                                            Valid
-                                            Email Address</em>
-                                        <input class="form-control" name="businessEmail" type="email"
-                                            placeholder="Enter Business Email" formControlName="businessEmail"
-                                            id="businessEmail" required />
-                                    </div>
-                                    <div class="form-group  col-md-12"
-                                        [ngClass]="{'error': website.touched && website.invalid}">
-                                        <label class="col-form-label" for="website">Website</label>
-                                        <em>*</em>
-                                        <em *ngIf="website.touched && website.invalid">Required</em>
-                                        <input class="form-control" name="website" type="url"
-                                            placeholder="www.example.com" formControlName="website" id="website"
-                                            required />
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- SECTION 3 -->
                         <section class="view" id="cred-view">
                             <div class="inner">
                                 <div class="wizard-header">
                                     <h3 class="heading">Credentials</h3>
                                     <p>Almost there! Please set your Account Password</p>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12"
-                                        [ngClass]="{'error': newPassword.invalid && newPassword.dirty }">
-                                        <label class="col-form-label" for="newPassword">New Password</label>
-                                        <em>*</em>
-                                        <em *ngIf="newPassword.touched && newPassword.invalid">Required</em>
-                                        <input class="form-control" name="newPassword" type="password"
-                                            placeholder="New Password" formControlName="newPassword" id="newPassword"
-                                            required />
-                                    </div>
-                                    <div class="form-group col-md-12"
-                                        [ngClass]="{'error': confirmPassword.invalid && confirmPassword.dirty }">
-                                        <label class="col-form-label" for="confirmPassword">Confirm Password</label>
-                                        <em *ngIf="!signUpForm.errors?.passwordInvalid">*</em>
-                                        <em *ngIf="confirmPassword.touched && confirmPassword.invalid && !signUpForm.errors?.passwordInvalid">Required</em>
-                                        <em
-                                            *ngIf="signUpForm.errors?.passwordInvalid &&(confirmPassword.dirty)">Password
-                                            mismatch</em>
-                                        <input class="form-control" name="confirmPassword" type="password"
-                                            placeholder="Confirm Password" formControlName="confirmPassword"
-                                            id="confirmPassword" required />
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12" [ngClass]="{'error': newPassword.invalid && newPassword.dirty }">
+                                                <label class="col-form-label" for="newPassword">New Password</label>
+                                                <em>*</em>
+                                                <em *ngIf="newPassword.touched && newPassword.invalid">Required</em>
+                                                <input class="form-control" name="newPassword" type="password" placeholder="New Password" formControlName="newPassword" id="newPassword" required />
+                                            </div>
+                                            <div class="form-group col-md-12" [ngClass]="{'error': confirmPassword.invalid && confirmPassword.dirty }">
+                                                <label class="col-form-label" for="confirmPassword">Confirm Password</label>
+                                                <em *ngIf="!signUpForm.errors?.passwordInvalid">*</em>
+                                                <em *ngIf="confirmPassword.touched && confirmPassword.invalid && !signUpForm.errors?.passwordInvalid">Required</em>
+                                                <em *ngIf="signUpForm.errors?.passwordInvalid &&(confirmPassword.dirty)">Password
+                          mismatch</em>
+                                                <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password" formControlName="confirmPassword" id="confirmPassword" required />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
                         <span class="btnGrp" (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
-                            <div id="btn-group" class="form-group">
-                                <span class="nav-btn-group">
-                                    <button type="button" id="back" class="btn btn-warning">
-                                        <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
-                                    </button>
-                                    <button style="float: right;" type="button" id="next" class="btn btn-success">
-                                        <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon>
-                                    </button>
-                                </span>
-                                <span class="submit-btn-group" style="float:right">
-                                    <button type="submit" class="btn btn-primary"
-                                        [disabled]="signUpForm.invalid">Submit</button>
-                                    <button (click)="cancel()" class="btn btn-danger">Cancel</button>
-                                </span>
-                            </div>
-                        </span>
-                    </form>
+              <div id="btn-group" class="form-group">
+                <span class="submit-btn-group" style="float:right">
+                  <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Submit</button>
+                  <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                </span>
                 </div>
+                </span>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 </main>

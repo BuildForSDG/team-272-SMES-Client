@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CrudService {
 
-  private baseUrl = ''
+  private baseUrl = 'https://u-connect.herokuapp.com/funders/'
 
   constructor(private http: HttpClient) { }
 

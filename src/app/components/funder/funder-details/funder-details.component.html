@@ -1,0 +1,179 @@
+<div>
+  <h1>Profile</h1>
+  <hr>
+</div>
+<input type="hidden" #selection>
+<div style="margin-top: 30px;" class="card-container row">
+    <div class="card card-small col" (click)="selection.value = 'about'" tabindex="0">
+        <span>About Funder</span>
+    </div>
+
+    <div class="card card-small col" (click)="selection.value = 'details'" tabindex="0">
+        <span>Funding Details</span>
+    </div>
+
+    <div class="card card-small col" (click)="selection.value = 'password'" tabindex="0">
+        <span>Password</span>
+    </div>
+</div>
+
+<div class="terminal row" [ngSwitch]="selection.value">
+
+  <!-- ABOUT -->
+  <div style="margin-top: 10px;" *ngSwitchDefault class="col">
+    <h4>About Funder</h4>
+    <hr>
+    <div class="row">
+      <div class="col">
+        <span>Organization Name</span>
+      </div>
+      <div class="col">
+        <span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Sector of operation</span>
+      </div>
+      <div class="col">
+        <span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Type of Organization</span>
+      </div>
+      <div class="col">
+        <span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Contact numbers</span>
+      </div>
+      <div class="col">
+        <span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Email</span>
+      </div>
+      <div class="col">
+        <span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Website</span>
+      </div>
+      <div class="col">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEATAILS -->
+<div style="margin-top: 10px;" *ngSwitchCase="'details'" class="col">
+  <h4>Funding Details</h4>
+  <hr>
+<div class="row">
+  <div class="col">
+    <span>Type of financing</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Funding agencies</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Terms and conditions</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Purpose</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Geographical preference</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Ceiling</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Startups or Ongoing</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Eligibility criteria of SME</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <span>Deadline of Application</span>
+  </div>
+  <div class="col">
+    <span></span>
+  </div>
+</div>
+</div>
+
+<!-- PASSWORD -->
+<div style="margin-top: 10px;" *ngSwitchCase="'password'" class="col">
+  <h4>Password</h4>
+  <hr>
+<form style="margin-bottom: 50px;" class="form">
+  <div class="row">
+    <label class="col-6">Current Password</label>
+    <input type="" name="" class="col-3 form-control">
+  </div>
+  <div class="row">
+    <label class="col-6">New Password</label>
+    <input type="" name="" class="col-3 form-control">
+  </div>
+  <div class="row">
+    <label class="col-6">Confirm Password</label>
+    <input type="" name="" class="col-3 form-control">
+  </div>
+  <div class="row">
+    <div class="col-6"></div>
+    <button class="btn btn-primary col-3">Confirm</button>
+    <div class="col-3"></div>
+  </div>
+</form>
+</div>
+</div>
+ 

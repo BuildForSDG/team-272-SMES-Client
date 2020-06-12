@@ -1,0 +1,61 @@
+@import '../../../components/user/sign-up/sign-up.component.scss';
+
+.col-md-4 .reg-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.col-md-4 .reg-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-nav .card {
+  padding: 5px 0 0px;
+}
+
+
+.col-md-4 .reg-nav div {
+  border: none;
+  border-bottom: outset;
+  width: 100%;
+}
+
+.col-md-4 .reg-nav div h2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: large;
+}
+
+.col-md-4 .reg-nav div a {
+  text-decoration: none;
+  color: black;
+}
+
+.col-md-4 .reg-nav div a:hover,
+.col-md-4 .reg-nav div a:active {
+  color: grey;
+}
+
+#btn-group .nav-btn-group #next {
+  margin-bottom: 10px;
+}
+
+
+#btn-group{
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-array-heading, .item-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-array-container{
+  margin: 10px 0px;
+  padding-bottom: 10px;
+  border-bottom: outset;
+}
