@@ -46,10 +46,11 @@ import { environment } from '../environments/environment';
   declarations: [
     AppComponent,
     HomePageComponent,
+    FundersComponent,
     DashboardComponent,
     OverviewComponent,
     SmesComponent,
-    NavbarComponent,
+    // NavbarComponent,
     SignInComponent,
     NewsComponent,
     AddfunderComponent,
@@ -82,16 +83,16 @@ import { environment } from '../environments/environment';
 
   providers: [
     AuthService, SideNavService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
-    {
-     provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // },
+    // {
+    //  provide: HTTP_INTERCEPTORS,
+    //   useClass: ErrorInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })
