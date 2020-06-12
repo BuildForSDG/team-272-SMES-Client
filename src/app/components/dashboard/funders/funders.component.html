@@ -1,0 +1,148 @@
+<!--Funders-->
+<h1> Funders </h1>
+
+<h2>Funder Information</h2>
+
+<button class="ui right floated small primary labeled icon button" routerLink="../Addfunder">Add Funder
+</button> 
+
+<table class="ui compact celled definition table" >
+        <thead>
+            <tr> 
+                <th>Organization Name</th>
+                <th>Sector of operation</th>
+                <th>Type of Organization</th>
+                <th>Contact numbers</th>
+                <th>Email Address</th>
+                <th>Website</th>
+                <th></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <!-- <tr *ngFor="let funder of funders">
+                <td>{{funder.organisationName}}</td>
+                <td>{{funder.sectorOfOperation}}</td>
+                <td>{{funder.typeOfOrganisation}}</td>
+                <td>‎{{funder.contactInformation}}</td>
+                <td>{{funder.emailAddress}}</td>
+                <td>{{funder.website}}</td>
+                <td><button (click)="deleteFunder(funder.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="funderdetails(funder.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                    <button class="btn btn-info" routerLink="../Editfunder">Edit Funder
+                    </button> 
+                </td>
+            </tr> -->
+
+            <!-- dummy values that should work for the mean time -->
+            <tr>
+                <td>Grofin Farmers Limited</td>
+                <td>Agriculture</td>
+                <td>Ongoing</td>
+                <td>‎0701783555</td>
+                <td>grofin farners at gmail.com</td>
+                <td>www.grofinframers.com</td>
+                <td><button >Delete</button>
+                    <button style="margin-left: 10px">Details</button>
+                    <button routerLink="../Editfunder">Edit Funder
+                    </button> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>CG consults</td>
+                <td>Hardware</td>
+                <td>Privately owned</td>
+                <td>‎077456478</td>
+                <td>cgconsults@gmail.com</td>
+                <td>www.cgconsults.com</td>
+                <td><button>Delete</button>
+                    <button  style="margin-left: 10px">Details</button>
+                    <button routerLink="../Editfunder">Edit Funder
+                    </button> 
+                </td>
+            </tr>
+
+
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <th colspan="4">
+                    
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h2>Funding details</h2>
+<table class="ui compact celled definition table" >
+        <thead>
+            <tr> 
+                <th>Type of financing</th>
+                <th>Primary Funding agencies</th>
+                <th>Terms and Conditions</th>
+                <th>Purpose for financing</th>
+                <th>Geographical preference</th>
+                <th>Funding ceiling</th>
+                <th>Fund startups or ongoing?</th>
+                <th>Eligibility criteria of SME</th>
+                <th>Deadline of Application</th>
+            </tr>
+        </thead>
+        
+        <!-- <tbody>
+            <tr *ngFor="let funder of funders">
+                <td>{{funder.typeOfFunding}}</td>
+                <td>{{funder.fundingAgencies}}</td>
+                <td>{{funder.termsConditions}}</td>
+                <td>‎{{funder.purposeFunding}}</td>
+                <td>{{funder.geographicalPreference}}</td>
+                <td>{{funder.fundingCeiling}}</td>
+                <td>{{funder.startOngoing}}</td>
+                <td>{{funder.eligibility}}</td>
+                <td>{{funder.deadline}}</td>
+                <td><button (click)="deleteFunder(funder.id)" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </tbody> -->
+
+        <tbody>
+            <tr>
+                <td>In kind</td>
+                <td>N/A</td>
+                <td>(find the terms on our website)</td>
+                <td>‎To buy seeds for new plants</td>
+                <td>Masaka, Uganda</td>
+                <td>9,000,000</td>
+                <td>On going</td>
+                <td>Should have been operating for six years or more</td>
+                <td>7th June, 2020</td>
+        
+            </tr>
+        </tbody>
+
+        <tbody>
+            <tr>
+                <td>In kind</td>
+                <td>N/A</td>
+                <td>(find the terms on our website)</td>
+                <td>‎To buy seeds for new plants</td>
+                <td>Masaka, Uganda</td>
+                <td>9,000,000</td>
+                <td>On going</td>
+                <td>Should have been operating for six years or more</td>
+                <td>7th June, 2020</td>
+                
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <th colspan="4">
+                    
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button routerLink="../Overview">Back to Overview</button>

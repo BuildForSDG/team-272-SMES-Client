@@ -1,0 +1,90 @@
+<h3>Edit Funder</h3>
+<div style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+
+        <div class = "form-group">
+            <label for="organisationName">Organisation Name</label>
+            <input type="text" class="form-control" id="organisationName" required [(ngModel)]="funder.organisationName" name="organisationName">
+        </div>
+
+        <div class = "form-group">
+            <label for="sectorOfOperation">Sector of Operation</label>
+            <input type="text" class="form-control" id=" sectorOfOperation" required [(ngModel)]="funder. sectorOfOperation" name="sectorOfOperation">
+        </div>
+
+        <div class = "form-group">
+            <label for="typeOfOrganisation">Type of Organisation</label>
+            <input type="text" class="form-control" id="typeOfOrganisation" required [(ngModel)]="funder.typeOfOrganisation" name="typeOfOrganisation">
+        </div>
+
+        <div class = "form-group">
+            <label for="contactInformation">Contact Information</label>
+            <input type="text" class="form-control" id="contactInformation" required [(ngModel)]="funder.contactInformation" name="contactInformation">
+        </div>
+
+        <div class = "form-group">
+            <label for="emailAddress">Email Address</label>
+            <input type="text" class="form-control" id="emailAddress" required [(ngModel)]="funder.emailAddress" name="emailAddress">
+        </div>
+
+        <div class = "form-group">
+            <label for="website">Website</label>
+            <input type="text" class="form-control" id="website" required [(ngModel)]="funder.website" name="website">
+        </div>
+
+        <div class = "form-group">
+            <label for="typeOfFunding">Type of Funding</label>
+            <input type="text" class="form-control" id="typeOfFunding" required [(ngModel)]="funder.typeOfFunding" name="typeOfFunding">
+        </div>
+
+        <div class = "form-group">
+            <label for="fundingAgencies">Funding Agencies</label>
+            <input type="text" class="form-control" id="fundingAgencies" required [(ngModel)]="funder.fundingAgencies" name="fundingAgencies">
+        </div>
+
+        <div class = "form-group">
+            <label for="organisationName">Terms and Conditions</label>
+            <input type="text" class="form-control" id="termsConditions" required [(ngModel)]="funder.termsConditions" name="termsConditions">
+        </div>
+
+        <div class = "form-group">
+            <label for="organisationName">Purpose of Funding</label>
+            <input type="text" class="form-control" id="purposeFunding" required [(ngModel)]="funder.purposeFunding" name="purposeFunding">
+        </div>
+
+        <div class = "form-group">
+            <label for="organisationName">Geographical Preference</label>
+            <input type="text" class="form-control" id=" geographicalPreference" required [(ngModel)]="funder. geographicalPreference" name=" geographicalPreference">
+        </div>
+
+        <div class = "form-group">
+            <label for="organisationName">Funding Ceiling</label>
+            <input type="text" class="form-control" id="fundingCeiling" required [(ngModel)]="funder.fundingCeiling" name="fundingCeiling">
+        </div>
+
+        <div class = "form-group">
+            <label for="organisationName">Do you wish to fund a start up or Ongoing company?</label>
+            <input type="text" class="form-control" id=" startOngoing" required [(ngModel)]="funder. startOngoing" name=" startOngoing">
+        </div>
+
+        <div class = "form-group">
+            <label for="organisationName">Eligibility Criteria</label>
+            <input type="text" class="form-control" id="eligibility" required [(ngModel)]="funder.eligibility" name="eligibility">
+        </div>
+
+        <div class = "form-group">
+            <label for="deadline">Deadline of Application</label>
+            <input type="text" class="form-control" id="deadline" required [(ngModel)]="funder.deadline" name="deadline">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+</div>
+
+<!-- <div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+     <button class="btn btn-success" (click)="newEmployee()">Add</button> 
+  </div> -->
+
+

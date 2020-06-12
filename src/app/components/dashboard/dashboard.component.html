@@ -1,0 +1,82 @@
+<div class="page-container" style="float: right;">
+    
+<div class="spacing">
+<router-outlet></router-outlet></div>
+
+<div class="content" fxLaypout="column" fxFlex>
+        <!--/sidebar-menu-->
+  <div class="sidebar-menu">
+
+    <header class="logo">
+    <span id="logo"> <h1>U-BUSINESS</h1> </span>
+    <h3>ADMIN</h3>
+    </header>
+
+  <div class="down">
+  <!-- <img src="../../assets/images/in2.jpg"> -->
+
+  <div class="row">
+    <div class = "col-8">
+      <img class="image" src="https://res.cloudinary.com/deborahao/image/upload/v1591965065/960x0_wmrcvz.jpg">
+    </div>
+  </div>
+  <h2>Deborah Aanyu</h2>
+  <p>System Administrator</p>
+
+  <ul>
+    <li><br>Profile</li>
+    <li><br>Settings</li>
+    <li><br>Log out</li>
+  </ul>
+
+</div>
+    
+<!--//down-->
+<div class="menu">
+<ul id="menu">
+
+  <li>
+    <a [routerLink] = "['/dashboard/Overview']">
+      <span>Overview</span>
+    </a>
+  </li>
+
+  <li id="menu-academico">
+    <a  [routerLink] = "['/dashboard/Funders']" >
+      <span> Funders</span>
+    </a>
+  </li>
+
+  <li id="menu-academico">
+    <a [routerLink] = "['/dashboard/Smes']">
+      <span>SMEs </span>
+    </a>
+  </li>
+
+  <li id="menu-academico">
+    <a [routerLink] = "['/dashboard/Blogs']">
+       <span>Blogs</span>
+    </a>
+  </li>
+
+  <li id="menu-academico">
+    <a>
+      <span>Events</span>
+    </a>
+    <ul id="menu-academico-sub" >
+      <li id="menu-academico-avaliacoes" ><a [routerLink] = "['/dashboard/events']">View Events</a></li>
+      <li id="menu-academico-boletim" ><a [routerLink] = "['/dashboard/add-event']">Add Event</a></li>
+      <li id="menu-academico-boletim" ><a [routerLink] = "['/dashboard/categories']">Categories</a></li>
+    </ul>
+  </li>
+
+    
+</ul>
+</div>
+</div>
+<!--sidebar-menu-->
+</div>
+    
+
+</div>
+

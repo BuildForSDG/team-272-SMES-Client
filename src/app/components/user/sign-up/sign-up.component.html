@@ -1,0 +1,107 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="form-container">
+                <div class="col-md-6">
+                    <h2 id="sign-up-heading">Create Your Account</h2>
+                    <hr>
+                    <form [formGroup]="signUpForm" (ngSubmit)="saveUserInfo(signUpForm.value)" autocomplete="off" novalidate>
+                        <!-- SECTION 1 -->
+
+                        <section class="view" id="view1">
+                            <div class="inner">
+                                <div class="wizard-header">
+                                    <h3 class="heading">General Information</h3>
+                                    <p>Please enter your infomation and proceed to the next step so we can build your account
+                                    </p>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12" [ngClass]="{'error': fullName.touched && fullName.invalid}">
+                                                <label for="fullName">Full Name</label>
+                                                <em>*</em>
+                                                <em *ngIf="fullName.touched && fullName.invalid">Required</em>
+                                                <input name="fullName" class="form-control" type="text" placeholder="Full Name" formControlName="fullName" id="fullName" required />
+                                            </div>
+                                            <div class="form-group col-md-12" [ngClass]="{'error': userName.touched && userName.invalid}">
+                                                <label for="userName">Username</label>
+                                                <em>*</em>
+                                                <em *ngIf="userName.touched && userName.invalid">Required</em>
+                                                <input name="userName" class="form-control" type="text" placeholder="Username" formControlName="userName" id="username" required />
+                                            </div>
+                                            <div class="form-group col-md-12" [ngClass]="{'error': businessName.touched && businessName.invalid}">
+                                                <label class="col-form-label" for="businessName">Business name</label>
+                                                <em>*</em>
+                                                <em *ngIf="businessName.touched && businessName.invalid">Required</em>
+                                                <input class="form-control" name="businessName" type="text" placeholder="Business name" formControlName="businessName" id="businessName" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-7" [ngClass]="{'error': email.touched && email.invalid}">
+                                                <label for="email">Email Address</label>
+                                                <em class="required" *ngIf="!email.errors?.pattern">*</em>
+                                                <em *ngIf="email.touched && email.invalid && !email.errors?.pattern">Required</em>
+                                                <em *ngIf="email.touched && email.invalid && email.errors?.pattern">Enter
+                          Valid
+                          Email Address</em>
+                                                <input name="email" class="form-control" type="email" placeholder="Enter your email address" formControlName="email" id="email" required />
+                                            </div>
+                                            <div class="form-group col-md-5" [ngClass]="{'error': phone.touched && phone.invalid}">
+                                                <label for="phone">Phone Number</label>
+                                                <em>*</em>
+                                                <em *ngIf="phone.touched && phone.invalid">Required</em>
+                                                <!--<em *ngIf="phone.errors.invalidPhone">Enter a valid Phone number</em>-->
+                                                <input name="phone" class="form-control" type="tel" placeholder="Phone Number" formControlName="phone" id="phone" required />
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- SECTION 2 -->
+                        <section class="view" id="cred-view">
+                            <div class="inner">
+                                <div class="wizard-header">
+                                    <h3 class="heading">Credentials</h3>
+                                    <p>Almost there! Please set your Account Password</p>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12" [ngClass]="{'error': newPassword.invalid && newPassword.dirty }">
+                                                <label class="col-form-label" for="newPassword">New Password</label>
+                                                <em>*</em>
+                                                <em *ngIf="newPassword.touched && newPassword.invalid">Required</em>
+                                                <input class="form-control" name="newPassword" type="password" placeholder="New Password" formControlName="newPassword" id="newPassword" required />
+                                            </div>
+                                            <div class="form-group col-md-12" [ngClass]="{'error': confirmPassword.invalid && confirmPassword.dirty }">
+                                                <label class="col-form-label" for="confirmPassword">Confirm Password</label>
+                                                <em *ngIf="!signUpForm.errors?.passwordInvalid">*</em>
+                                                <em *ngIf="confirmPassword.touched && confirmPassword.invalid && !signUpForm.errors?.passwordInvalid">Required</em>
+                                                <em *ngIf="signUpForm.errors?.passwordInvalid &&(confirmPassword.dirty)">Password
+                          mismatch</em>
+                                                <input class="form-control" name="confirmPassword" type="password" placeholder="Confirm Password" formControlName="confirmPassword" id="confirmPassword" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <span class="btnGrp" (mouseenter)="mouseOver=true" (mouseleave)="mouseOver=false">
+              <div id="btn-group" class="form-group">
+                <span class="submit-btn-group" style="float:right">
+                  <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Submit</button>
+                  <button (click)="cancel()" class="btn btn-danger">Cancel</button>
+                </span>
+                </div>
+                </span>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>

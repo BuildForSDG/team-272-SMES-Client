@@ -1,0 +1,55 @@
+<h2>Funder Details</h2>
+
+<hr/>
+<div *ngIf = "funder">
+    <div>
+        <label><b>Organisation Name: </b></label> {{funder.organisationName}}
+    </div>
+    <div>
+        <label><b>Sector of Operation: </b></label> {{funder.sectorOfOperation}}
+    </div>
+    <div>
+        <label><b>Type of Organisation: </b></label> {{funder. typeOfOrganisation}}
+    </div>
+    <div>
+        <label><b>Contact Information: </b></label> {{funder.contactInformation}}
+    </div>
+    <div>
+        <label><b>Email Address: </b></label> {{funder.emailAddress}}
+    </div>
+    <div>
+        <label><b>Website: </b></label> {{funder.website}}
+    </div>
+    <div>
+        <label><b>Type of Funding: </b></label> {{funder.typeOfFunding}}
+    </div>
+    <div>
+        <label><b>Funding Agencies: </b></label> {{funder.fundingAgencies}}
+    </div>
+    <div>
+        <label><b>Terms and Conditions: </b></label> {{funder.termsConditions}}
+    </div>
+    <div>
+        <label><b>Purpose for Funding: </b></label> {{funder.purposeFunding}}
+    </div>
+    <div>
+        <label><b>Geographical Preference: </b></label> {{funder.geographicalPreference}}
+    </div>
+    <div>
+        <label><b>Funding ceiling: </b></label> {{funder.fundingCeiling}}
+    </div>
+    <div>
+        <label><b>Startup or Ongoing Company: </b></label> {{funder.startOngoing}}
+    </div>
+    <div>
+        <label><b>Eligibility for Funding: </b></label> {{funder.eligibility}
+    </div>
+    <div>
+        <label><b>Deadline of Application: </b></label> {{funder.deadline}}
+    </div>
+
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Funder List</button><br>
